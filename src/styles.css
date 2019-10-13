@@ -1,0 +1,67 @@
+body {
+  min-height: 100vh;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
+section {
+  margin-top: 1rem;
+}
+
+/*disable activity type select by default*/
+.type-disabled {
+  pointer-events: none;
+}
+
+/* activity search result styles */
+.activity-list-container ul {
+  padding: 0;
+  margin: 1rem auto;
+}
+
+.activity-list-container li {
+  text-align: left;
+  list-style: none;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.activity-list-container li:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+}
+
+/* activity display styles*/
+span {
+  font-weight: bold;
+}
+
+.address-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.address-container p {
+  margin: 0;
+  line-height: 1.5rem;
+}
+
+.times p {
+  margin: 0;
+  line-height: 1.5rem;
+}
+
+.transport-container h4,
+.transport-container p {
+  margin: 0;
+  line-height: 1.5rem;
+}
