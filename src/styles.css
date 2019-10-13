@@ -33,7 +33,7 @@ section {
 }
 
 /* activity search result styles */
-.activity-list-container ul {
+.activity-list-container {
   padding: 0;
   margin: 1rem auto;
 }
