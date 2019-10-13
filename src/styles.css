@@ -13,6 +13,16 @@ nav {
   align-content: center;
 }
 
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a {
+  margin-right: 1rem;
+}
+
 section {
   margin-top: 1rem;
 }
