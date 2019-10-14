@@ -5,6 +5,7 @@ import Tabletop from "tabletop";
 import Nav from "./components/Nav";
 import Loading from "./components/Loading";
 import ActivitySearch from "./components/ActivitySearch";
+import PostcodeSearch from './components/PostcodeSearch'
 import SearchResults from "./components/SearchResults";
 import Checkout from "./components/Checkout";
 
@@ -18,6 +19,7 @@ class App extends Component {
     typeOptions: null,
     disableTypeSelect: true,
     selectedType: [],
+    postcode: '',
     searchResults: [],
     selectedActivities: []
   };
@@ -254,6 +256,15 @@ class App extends Component {
     });
   };
 
+  handlePostcodeInput = (ev) => {
+    this.setState({ postcode: ev.target.value.toUpperCase() })
+  }
+
+  handlePostcodeSearch = (ev) => {
+    ev.preventDefault()
+    console.log(this.state.postcode)
+  }
+
   // remove selected item from search results and add to selected activities
   handleActivitySelect = item => {
     const searchedActivities = Object.assign([], this.state.searchResults);
@@ -299,6 +310,11 @@ class App extends Component {
                     typeValue={this.state.selectedType}
                     handleTypeSelect={this.handleTypeSelect}
                     disableTypeSelect={this.state.disableTypeSelect}
+                  />
+                  <PostcodeSearch
+                    postcode={this.state.postcode}
+                    postcodeSearch={this.handlePostcodeSearch}
+                    postcodeChange={this.handlePostcodeInput}
                   />
                   {this.state.searchResults && (
                     <SearchResults
