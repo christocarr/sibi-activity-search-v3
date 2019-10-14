@@ -272,9 +272,11 @@ class App extends Component {
           patientLat: res.data.data.latitude,
           patientLong: res.data.data.longitude
         }, () => {
-          console.log('patient latitude', this.state.patientLat)
-          console.log('patient longitude', this.state.patientLong)
+          //function to perform when data returns
         })
+      })
+      .catch(err => {
+        console.log('err', err)
       })
   }
 
@@ -328,6 +330,8 @@ class App extends Component {
                     postcode={this.state.postcode}
                     postcodeSearch={this.handlePostcodeSearch}
                     postcodeChange={this.handlePostcodeInput}
+                    latitude={this.state.patientLat}
+                    longitude={this.state.patientLong}
                   />
                   {this.state.searchResults && (
                     <SearchResults
