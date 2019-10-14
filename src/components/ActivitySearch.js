@@ -29,7 +29,7 @@ const ActivitySearch = ({
     showTypeSelect = "type-disabled";
   }
   return (
-    <div>
+    <div className="search-container">
       <Select options={categoryOptions} onChange={handleCategorySelect} />
       <Select
         className={showTypeSelect}
