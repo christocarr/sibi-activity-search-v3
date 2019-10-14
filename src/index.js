@@ -266,7 +266,7 @@ class App extends Component {
   handlePostcodeSearch = (ev) => {
     ev.preventDefault()
     const postcode = this.state.postcode.replace(' ', '+')
-    axios.get(`http://api.getthedata.com/postcode/${postcode}`)
+    axios.get(`https://api.getthedata.com/postcode/${postcode}`)
       .then(res => {
         this.setState({ 
           patientLat: res.data.data.latitude,
