@@ -75,3 +75,9 @@ span {
   margin: 0;
   line-height: 1.5rem;
 }
+
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 80vw;
+  }
+}

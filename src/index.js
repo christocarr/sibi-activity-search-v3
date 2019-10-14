@@ -286,39 +286,41 @@ class App extends Component {
       <Router>
         <div className="App">
           <Nav />
-          <Switch>
-            {this.state.loading ? (
-              <Loading />
-            ) : (
-              <Route exact path="/">
-                <ActivitySearch
-                  categoryValue={this.state.selectedCategory}
-                  handleCategorySelect={this.handleCategorySelect}
-                  typeOptions={this.state.typeOptions}
-                  typeValue={this.state.selectedType}
-                  handleTypeSelect={this.handleTypeSelect}
-                  disableTypeSelect={this.state.disableTypeSelect}
-                />
-                {this.state.searchResults && (
-                  <SearchResults
-                    searchResults={this.state.searchResults}
-                    handleSelect={this.handleActivitySelect}
+          <div className="container">
+            <Switch>
+              {this.state.loading ? (
+                <Loading />
+              ) : (
+                <Route exact path="/">
+                  <ActivitySearch
+                    categoryValue={this.state.selectedCategory}
+                    handleCategorySelect={this.handleCategorySelect}
+                    typeOptions={this.state.typeOptions}
+                    typeValue={this.state.selectedType}
+                    handleTypeSelect={this.handleTypeSelect}
+                    disableTypeSelect={this.state.disableTypeSelect}
+                  />
+                  {this.state.searchResults && (
+                    <SearchResults
+                      searchResults={this.state.searchResults}
+                      handleSelect={this.handleActivitySelect}
+                      selectedActivities={this.state.selectedActivities}
+                    />
+                  )}
+                </Route>
+              )}
+              <Route
+                path="/checkout"
+                render={props => (
+                  <Checkout
+                    {...props}
                     selectedActivities={this.state.selectedActivities}
+                    handleActivityRemove={this.handleActivityRemove}
                   />
                 )}
-              </Route>
-            )}
-            <Route
-              path="/checkout"
-              render={props => (
-                <Checkout
-                  {...props}
-                  selectedActivities={this.state.selectedActivities}
-                  handleActivityRemove={this.handleActivityRemove}
-                />
-              )}
-            />
-          </Switch>
+              />
+            </Switch>
+          </div>
         </div>
       </Router>
     );
