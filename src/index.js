@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Tabletop from "tabletop";
+import axios from 'axios'
 import Nav from "./components/Nav";
 import Loading from "./components/Loading";
 import ActivitySearch from "./components/ActivitySearch";
@@ -20,6 +21,8 @@ class App extends Component {
     disableTypeSelect: true,
     selectedType: [],
     postcode: '',
+    patientLat: null,
+    patientLong: null,
     searchResults: [],
     selectedActivities: []
   };
@@ -262,7 +265,17 @@ class App extends Component {
 
   handlePostcodeSearch = (ev) => {
     ev.preventDefault()
-    console.log(this.state.postcode)
+    const postcode = this.state.postcode.replace(' ', '+')
+    axios.get(`http://api.getthedata.com/postcode/${postcode}`)
+      .then(res => {
+        this.setState({ 
+          patientLat: res.data.data.latitude,
+          patientLong: res.data.data.longitude
+        }, () => {
+          console.log('patient latitude', this.state.patientLat)
+          console.log('patient longitude', this.state.patientLong)
+        })
+      })
   }
 
   // remove selected item from search results and add to selected activities
