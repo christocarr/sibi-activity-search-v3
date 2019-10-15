@@ -23,12 +23,18 @@ const ContactDetails = ({
       </p>
       <p>
         {Website ? <span>Website:</span> : null}{" "}
-        {Website ? <a href={Website}>{Website}</a> : null}
+        {Website ? (
+          <a href={Website} target="_blank" rel="noopener noreferrer">
+            {Website}
+          </a>
+        ) : null}
       </p>
       <p>
         {OtherContactInfo ? <span>Other:</span> : null}{" "}
         {OtherContactInfo ? (
-          <a href={OtherContactInfo}>{OtherContactInfo}</a>
+          <a href={OtherContactInfo} target="_blank" rel="noopener noreferrer">
+            {OtherContactInfo}
+          </a>
         ) : null}
       </p>
     </section>
