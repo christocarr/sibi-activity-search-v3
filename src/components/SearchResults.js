@@ -27,7 +27,7 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities }) => {
   });
 
   // filter list by nearest activities with given postcode
-  filterList = filterList.filter(item => {});
+  // filterList = filterList.filter(item => {});
 
   // filter the list when the user starts typing into the search by town input
   // filterList = filterList.filter(item => {
