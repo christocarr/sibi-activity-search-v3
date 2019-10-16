@@ -23,6 +23,7 @@ class App extends Component {
     postcode: '',
     patientLat: null,
     patientLong: null,
+    selectedDistance: null,
     searchResults: [],
     selectedActivities: []
   };
@@ -280,6 +281,14 @@ class App extends Component {
       })
   }
 
+  handleDistanceSelect = (ev) => {
+    if (ev.target.value === 'option2km') {
+      this.setState({ selectedDistance: 2 })
+    } else if (ev.target.value === 'option5km') {
+      this.setState({ selectedDistance: 5 })
+    }
+    
+  }
   // remove selected item from search results and add to selected activities
   handleActivitySelect = item => {
     const searchedActivities = Object.assign([], this.state.searchResults);
@@ -332,6 +341,8 @@ class App extends Component {
                     postcodeChange={this.handlePostcodeInput}
                     latitude={this.state.patientLat}
                     longitude={this.state.patientLong}
+                    selectedDistance={this.state.selectedDistance}
+                    distanceSelect={this.handleDistanceSelect}
                   />
                   {this.state.searchResults && (
                     <SearchResults
@@ -340,6 +351,7 @@ class App extends Component {
                       selectedActivities={this.state.selectedActivities}
                       patientLatitude={this.state.patientLat}
                       patientLongitude={this.state.patientLong}
+                      selectedDistance={this.state.selectedDistance}
                     />
                   )}
                 </Route>

@@ -8,7 +8,7 @@ import Transport from "./activity-display/Transport";
 import Accessibility from "./activity-display/Accessibility";
 import ContactDetails from "./activity-display/ContactDetails";
 
-const SearchResults = ({ searchResults, handleSelect, selectedActivities, patientLatitude, patientLongitude }) => {
+const SearchResults = ({ searchResults, handleSelect, selectedActivities, patientLatitude, patientLongitude, selectedDistance }) => {
   let filterList = [];
 
   // filter search results by date last check is no later than 18 months
@@ -27,12 +27,11 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
   });
 
   // filter list by nearest activities with given postcode
-  // filterList = filterList.filter(item => {});
+  filterList = filterList.filter(item => {
+    
 
-  // filter the list when the user starts typing into the search by town input
-  // filterList = filterList.filter(item => {
-  //   return item.Town.toLowerCase().indexOf(townSearch.toLowerCase()) !== -1;
-  // });
+  });
+
 
   const renderedList = filterList.map((item, index) => {
     // check if current activity(item) is not already selected
