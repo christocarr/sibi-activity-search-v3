@@ -8,7 +8,7 @@ import Transport from "./activity-display/Transport";
 import Accessibility from "./activity-display/Accessibility";
 import ContactDetails from "./activity-display/ContactDetails";
 
-const SearchResults = ({ searchResults, handleSelect, selectedActivities }) => {
+const SearchResults = ({ searchResults, handleSelect, selectedActivities, patientLatitude, patientLongitude }) => {
   let filterList = [];
 
   // filter search results by date last check is no later than 18 months

@@ -338,6 +338,8 @@ class App extends Component {
                       searchResults={this.state.searchResults}
                       handleSelect={this.handleActivitySelect}
                       selectedActivities={this.state.selectedActivities}
+                      patientLatitude={this.state.patientLat}
+                      patientLongitude={this.state.patientLong}
                     />
                   )}
                 </Route>
