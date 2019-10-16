@@ -16,7 +16,7 @@ const PostcodeSearch = ({ postcodeChange, postcodeSearch, postcode, latitude, lo
           type="radio" 
           id="twoKilometres"
           value='option2km'
-          checked={selectedDistance === 2}
+          checked={selectedDistance === 2000}
           onChange={distanceSelect}
         />
       </label>
@@ -25,7 +25,7 @@ const PostcodeSearch = ({ postcodeChange, postcodeSearch, postcode, latitude, lo
           type="radio" 
           id="fiveKilometres"
           value='option5km'
-          checked={selectedDistance === 5}
+          checked={selectedDistance === 5000}
           onChange={distanceSelect}
         />
       </label>
