@@ -283,9 +283,9 @@ class App extends Component {
 
   handleDistanceSelect = (ev) => {
     if (ev.target.value === 'option2km') {
-      this.setState({ selectedDistance: 2 })
+      this.setState({ selectedDistance: 2000 })
     } else if (ev.target.value === 'option5km') {
-      this.setState({ selectedDistance: 5 })
+      this.setState({ selectedDistance: 5000 })
     }
     
   }
