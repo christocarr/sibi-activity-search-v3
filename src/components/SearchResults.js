@@ -1,4 +1,5 @@
 import React from "react";
+import { getDistance } from 'geolib';
 import NameOfService from "./activity-display/NameOfService";
 import Address from "./activity-display/Address";
 import OtherInfo from "./activity-display/OtherInfo";
@@ -28,8 +29,19 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
 
   // filter list by nearest activities with given postcode
   filterList = filterList.filter(item => {
-    
-
+    let distance = 0
+    if (patientLatitude === 0) {
+      return item
+    } else if ( patientLatitude > 0) {
+      distance = getDistance(
+        { latitude: patientLatitude, longitude: patientLongitude },
+        { latitude: item.Latitude, longitude: item.Longitude }
+      )
+    }
+    if (distance <= selectedDistance) {
+      console.log(distance)
+      return item
+    }
   });
 
 
