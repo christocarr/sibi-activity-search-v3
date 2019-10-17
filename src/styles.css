@@ -85,6 +85,22 @@ span {
   line-height: 1.5rem;
 }
 
+/* postcode search form*/
+.postcode-search {
+  display: flex;
+  justify-content: space-around;
+  background-color: lightgray;
+  padding: 1rem;
+}
+
+.postcode-search input {
+  margin-right: 0.5rem;
+}
+
+.postcode-search input[type="text"] {
+  margin-left: 0.5rem;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     width: 80vw;
