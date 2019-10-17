@@ -30,13 +30,18 @@ const ActivitySearch = ({
   }
   return (
     <div className="search-container">
-      <Select options={categoryOptions} onChange={handleCategorySelect} />
+      <Select
+        options={categoryOptions}
+        onChange={handleCategorySelect}
+        placeholder="Choose a category"
+      />
       <Select
         className={showTypeSelect}
         options={typeOptions}
         value={typeValue}
         // isMulti
         onChange={handleTypeSelect}
+        placeholder="then select an activity type"
       />
     </div>
   );
