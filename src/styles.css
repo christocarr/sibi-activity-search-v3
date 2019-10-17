@@ -86,11 +86,14 @@ span {
 }
 
 /* postcode search form*/
+form {
+  background-color: lightgray;
+  padding: 1rem;
+}
+
 .postcode-search {
   display: flex;
   justify-content: space-around;
-  background-color: lightgray;
-  padding: 1rem;
 }
 
 .postcode-search input {
