@@ -91,6 +91,10 @@ form {
   padding: 1rem;
 }
 
+form p {
+  margin: 0 0 1rem 0;
+}
+
 .postcode-search {
   display: flex;
   justify-content: space-around;
@@ -102,6 +106,7 @@ form {
 
 .postcode-search input[type="text"] {
   margin-left: 0.5rem;
+  width: 4.5rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -109,7 +114,8 @@ form {
     width: 80vw;
   }
 
-  .search-container {
+  .search-container,
+  form {
     width: 70%;
     margin: auto;
   }
@@ -120,8 +126,8 @@ form {
     width: 60vw;
   }
 
-  .search-container {
+  .search-container,
+  form {
     width: 60%;
-    margin: auto;
   }
 }
