@@ -11,7 +11,7 @@ const PostcodeSearch = ({
 }) => {
   return (
     <form onSubmit={postcodeSearch}>
-      <p>Search for activities within a range</p>
+      <p>Search for activities within a range of patient's postcode</p>
       <div className="postcode-search">
         <label htmlFor="postcodeInput">
           Postcode:
