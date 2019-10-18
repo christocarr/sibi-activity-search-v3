@@ -44,7 +44,7 @@ const PostcodeSearch = ({
             />
           </label>
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Search" />
       </div>
     </form>
   );
