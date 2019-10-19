@@ -11,7 +11,8 @@ import ContactDetails from "./activity-display/ContactDetails";
 const Checkout = ({ selectedActivities, handleActivityRemove }) => {
   const renderedList = selectedActivities.map((item, index) => {
     return (
-      <li key={index} onClick={handleActivityRemove.bind(this, item)}>
+      <li key={index}>
+        <div onClick={handleActivityRemove.bind(this, item)} className="remove-activity-button"><a>Remove</a></div>
         <NameOfService serviceName={item.NameOfService} />
         <Address
           AddressLine1={item.AddressLine1}

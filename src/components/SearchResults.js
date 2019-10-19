@@ -49,7 +49,8 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
     // check if current activity(item) is not already selected
     if (selectedActivities.indexOf(item) === -1) {
       return (
-        <li key={index} onClick={handleSelect.bind(this, item)}>
+        <li key={index}>
+          <div onClick={handleSelect.bind(this, item)}className="add-activity-button"><a>Add</a></div>
           <NameOfService serviceName={item.NameOfService} />
           <Address
             AddressLine1={item.AddressLine1}
