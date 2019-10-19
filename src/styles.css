@@ -55,13 +55,30 @@ section {
 .activity-list-container li {
   text-align: left;
   list-style: none;
-  padding: 1rem 1.5rem 1.5rem 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.activity-list-container li:hover {
+/* .activity-list-container li:hover {
   cursor: pointer;
   background-color: lightgrey;
+} */
+
+.add-activity-button:hover, .remove-activity-button:hover {
+  cursor: pointer;
+}
+
+.add-activity-button {
+  text-align: center;
+  color: white;
+  background-color: green;
+  padding: 0.5rem 0;
+}
+
+.remove-activity-button {
+  text-align: center;
+  color: white;
+  background-color: red;
+  padding: 0.5rem 0;
 }
 
 /* activity display styles*/
@@ -119,6 +136,19 @@ form p {
   .container {
     width: 80vw;
   }
+  .activity-list-container li {
+    position: relative;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  /* .add-activity-button, .remove-activity-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    text-orientation: upright;
+    writing-mode: sideways-rl;
+  } */
   #postcodeInput {
     width: 6rem;
   }
