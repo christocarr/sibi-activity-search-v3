@@ -39,7 +39,7 @@ const Checkout = ({ selectedActivities, handleActivityRemove }) => {
           Website={item.Website}
           OtherContactInfo={item.OtherContactInfo}
         />
-        <div onClick={handleActivityRemove.bind(this, item)} className="remove-activity-button"><a>Remove</a></div>
+        <button onClick={handleActivityRemove.bind(this, item)} className="remove-activity-button">Remove</button>
       </li>
     );
   });
