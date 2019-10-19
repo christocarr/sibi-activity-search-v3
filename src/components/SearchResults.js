@@ -50,7 +50,6 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
     if (selectedActivities.indexOf(item) === -1) {
       return (
         <li key={index}>
-          <div onClick={handleSelect.bind(this, item)}className="add-activity-button"><a>Add</a></div>
           <NameOfService serviceName={item.NameOfService} />
           <Address
             AddressLine1={item.AddressLine1}
@@ -78,6 +77,7 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
             Website={item.Website}
             OtherContactInfo={item.OtherContactInfo}
           />
+          <div onClick={handleSelect.bind(this, item)}className="add-activity-button"><a>Add</a></div>
         </li>
       );
     } else if (selectedActivities.indexOf(item) !== -1) {

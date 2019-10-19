@@ -12,7 +12,6 @@ const Checkout = ({ selectedActivities, handleActivityRemove }) => {
   const renderedList = selectedActivities.map((item, index) => {
     return (
       <li key={index}>
-        <div onClick={handleActivityRemove.bind(this, item)} className="remove-activity-button"><a>Remove</a></div>
         <NameOfService serviceName={item.NameOfService} />
         <Address
           AddressLine1={item.AddressLine1}
@@ -40,6 +39,7 @@ const Checkout = ({ selectedActivities, handleActivityRemove }) => {
           Website={item.Website}
           OtherContactInfo={item.OtherContactInfo}
         />
+        <div onClick={handleActivityRemove.bind(this, item)} className="remove-activity-button"><a>Remove</a></div>
       </li>
     );
   });
