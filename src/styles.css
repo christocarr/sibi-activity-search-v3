@@ -68,6 +68,8 @@ section {
 }
 
 .add-activity-button {
+  width: 100%;
+  border: none;
   text-align: center;
   color: white;
   background-color: green;
@@ -75,6 +77,8 @@ section {
 }
 
 .remove-activity-button {
+  width: 100%;
+  border: none;
   text-align: center;
   color: white;
   background-color: red;
