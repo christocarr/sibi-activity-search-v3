@@ -2,6 +2,7 @@ body {
   min-height: 100vh;
   max-width: 100vw;
   color: #3a3a3a;
+  margin: 0;
 }
 
 .App {
@@ -117,6 +118,13 @@ form p {
 @media screen and (min-width: 768px) {
   .container {
     width: 80vw;
+  }
+  #postcodeInput {
+    width: 6rem;
+  }
+  input[type="submit"] {
+    width: 5rem;
+    
   }
 }
 
