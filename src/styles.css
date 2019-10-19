@@ -118,21 +118,10 @@ form p {
   .container {
     width: 80vw;
   }
-
-  .search-container,
-  form {
-    width: 70%;
-    margin: auto;
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .container {
-    width: 60vw;
-  }
-
-  .search-container,
-  form {
-    width: 60%;
+    width: 50vw;
   }
 }
