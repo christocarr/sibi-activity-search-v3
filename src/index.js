@@ -321,9 +321,13 @@ class App extends Component {
   handlePrint = () => {
     this.setState(prevState => ({ 
       modal: !prevState.modal 
-    }), () => {
-      console.log(this.state.modal)
-    })
+    }))
+  }
+
+  handleModalClose = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }))
   }
 
   render() {
@@ -374,6 +378,7 @@ class App extends Component {
                     selectedActivities={this.state.selectedActivities}
                     handleActivityRemove={this.handleActivityRemove}
                     print={this.handlePrint}
+                    modalClose={this.handleModalClose}
                   />
                 )}
               />
