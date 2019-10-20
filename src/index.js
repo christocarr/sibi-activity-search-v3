@@ -9,6 +9,7 @@ import ActivitySearch from "./components/ActivitySearch";
 import PostcodeSearch from './components/PostcodeSearch'
 import SearchResults from "./components/SearchResults";
 import Checkout from "./components/Checkout";
+import Modal from './components/Modal'
 
 import "./styles.css";
 
@@ -373,15 +374,23 @@ class App extends Component {
               <Route
                 path="/checkout"
                 render={props => (
-                  <Checkout
-                    {...props}
-                    selectedActivities={this.state.selectedActivities}
-                    handleActivityRemove={this.handleActivityRemove}
-                    print={this.handlePrint}
-                    modalClose={this.handleModalClose}
-                  />
+                  <>
+                    <Checkout
+                      {...props}
+                      selectedActivities={this.state.selectedActivities}
+                      handleActivityRemove={this.handleActivityRemove}
+                      print={this.handlePrint}
+                      modalClose={this.handleModalClose}
+                    />
+                    <Modal
+                      selectedActivities={this.state.selectedActivities}
+                      modalOpen={this.state.modal}
+                      modalClose={this.handleModalClose}
+                    />
+                  </>
                 )}
               />
+              
             </Switch>
           </div>
         </div>
