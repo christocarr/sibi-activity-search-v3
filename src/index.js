@@ -25,7 +25,8 @@ class App extends Component {
     patientLong: null,
     selectedDistance: null,
     searchResults: [],
-    selectedActivities: []
+    selectedActivities: [],
+    modal: false,
   };
 
   componentDidMount() {
@@ -289,6 +290,7 @@ class App extends Component {
     }
     
   }
+
   // remove selected item from search results and add to selected activities
   handleActivitySelect = item => {
     const searchedActivities = Object.assign([], this.state.searchResults);
@@ -317,7 +319,11 @@ class App extends Component {
   };
 
   handlePrint = () => {
-    console.log('print')
+    this.setState(prevState => ({ 
+      modal: !prevState.modal 
+    }), () => {
+      console.log(this.state.modal)
+    })
   }
 
   render() {
