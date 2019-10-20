@@ -26,6 +26,7 @@ class App extends Component {
     patientLong: null,
     selectedDistance: null,
     searchResults: [],
+    selectedActivityTypes: [],
     selectedActivities: [],
     modal: false,
   };
@@ -260,6 +261,13 @@ class App extends Component {
       // then set state with results
       this.setState({ searchResults: results });
     });
+
+    // add selected type to array to pass to pdfdocument
+    const selectedTypes = Object.assign([], this.state.selectedActivityTypes);
+    if (selectedTypes.indexOf(type.label) === -1) {
+      selectedTypes.push(type.label)
+    }
+    this.setState({ selectedActivityTypes: selectedTypes })
   };
 
   handlePostcodeInput = (ev) => {
@@ -382,11 +390,14 @@ class App extends Component {
                       print={this.handlePrint}
                       modalClose={this.handleModalClose}
                     />
+                    { this.state.modal &&
                     <Modal
+                      selectedType={this.state.selectedActivityTypes}
                       selectedActivities={this.state.selectedActivities}
                       modalOpen={this.state.modal}
                       modalClose={this.handleModalClose}
                     />
+                    }
                   </>
                 )}
               />
