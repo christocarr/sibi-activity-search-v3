@@ -316,6 +316,10 @@ class App extends Component {
     this.setState({ selectedActivities: activities });
   };
 
+  handlePrint = () => {
+    console.log('print')
+  }
+
   render() {
     return (
       <Router>
@@ -363,6 +367,7 @@ class App extends Component {
                     {...props}
                     selectedActivities={this.state.selectedActivities}
                     handleActivityRemove={this.handleActivityRemove}
+                    print={this.handlePrint}
                   />
                 )}
               />

@@ -8,7 +8,7 @@ import Transport from "./activity-display/Transport";
 import Accessibility from "./activity-display/Accessibility";
 import ContactDetails from "./activity-display/ContactDetails";
 
-const Checkout = ({ selectedActivities, handleActivityRemove }) => {
+const Checkout = ({ selectedActivities, handleActivityRemove, print }) => {
   const renderedList = selectedActivities.map((item, index) => {
     return (
       <li key={index}>
@@ -57,7 +57,10 @@ const Checkout = ({ selectedActivities, handleActivityRemove }) => {
       {selectedActivities.length > 1 && (
         <p>You have selected {selectedActivities.length} activities.</p>
       )}
-      {selectedActivities.length > 0 ? <button>Print</button> : null}
+      {selectedActivities.length > 0 ? 
+        <button onClick={print}>Print</button> 
+        : null
+      }
       <ul className="activity-list-container">{renderedList}</ul>
     </div>
   );
