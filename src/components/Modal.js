@@ -1,6 +1,7 @@
 import React from 'react'
+import PDFDocument from './PDFDocument'
 
-const Modal = ({ modalClose, modalOpen }) => {
+const Modal = ({ selectedType, selectedActivities, modalClose, modalOpen }) => {
 
   const showHide = modalOpen ? "modal display-block" : "modal display-none"
 
@@ -8,6 +9,10 @@ const Modal = ({ modalClose, modalOpen }) => {
     <div className={showHide}>
       <section >
         <button onClick={modalClose}>Close</button>
+        <PDFDocument
+          activityTypes={selectedType}
+          activities={selectedActivities} 
+        />
       </section>
     </div>
   )
