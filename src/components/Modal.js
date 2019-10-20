@@ -7,7 +7,7 @@ const Modal = ({ modalClose, modalOpen }) => {
   return (
     <div className={showHide}>
       <section >
-        
+        <button onClick={modalClose}>Close</button>
       </section>
     </div>
   )
