@@ -350,14 +350,6 @@ class App extends Component {
                 <Loading />
               ) : (
                 <Route exact path="/">
-                  <ActivitySearch
-                    categoryValue={this.state.selectedCategory}
-                    handleCategorySelect={this.handleCategorySelect}
-                    typeOptions={this.state.typeOptions}
-                    typeValue={this.state.selectedType}
-                    handleTypeSelect={this.handleTypeSelect}
-                    disableTypeSelect={this.state.disableTypeSelect}
-                  />
                   <PostcodeSearch
                     postcode={this.state.postcode}
                     postcodeSearch={this.handlePostcodeSearch}
@@ -366,6 +358,14 @@ class App extends Component {
                     longitude={this.state.patientLong}
                     selectedDistance={this.state.selectedDistance}
                     distanceSelect={this.handleDistanceSelect}
+                  />
+                  <ActivitySearch
+                    categoryValue={this.state.selectedCategory}
+                    handleCategorySelect={this.handleCategorySelect}
+                    typeOptions={this.state.typeOptions}
+                    typeValue={this.state.selectedType}
+                    handleTypeSelect={this.handleTypeSelect}
+                    disableTypeSelect={this.state.disableTypeSelect}
                   />
                   {this.state.searchResults && (
                     <SearchResults
