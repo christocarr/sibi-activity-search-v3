@@ -65,11 +65,6 @@ section {
   margin-bottom: 2rem;
 }
 
-/* .activity-list-container li:hover {
-  cursor: pointer;
-  background-color: lightgrey;
-} */
-
 .add-activity-button:hover, .remove-activity-button:hover {
   cursor: pointer;
 }
@@ -121,7 +116,7 @@ span {
 /* postcode search form*/
 form {
   background-color: lightgray;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   margin-top: 0.5rem;
 }
 
