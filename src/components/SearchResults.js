@@ -45,8 +45,11 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
       console.log(distance)
       return item
     }
+    // return all items if all option is chosen
+    if (selectedDistance === 0) {
+      return item
+    }
   });
-
 
   const renderedList = filterList.map((item, index) => {
     // check if current activity(item) is not already selected

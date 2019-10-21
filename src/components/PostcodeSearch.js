@@ -43,6 +43,16 @@ const PostcodeSearch = ({
               onChange={distanceSelect}
             />
           </label>
+          <label htmlFor="all">
+            All:
+            <input
+              type="radio"
+              id="all"
+              value="all"
+              checked={selectedDistance === 0}
+              onChange={distanceSelect}
+            />
+          </label>
         </div>
         <input type="submit" value="Search" />
       </div>

@@ -296,8 +296,9 @@ class App extends Component {
       this.setState({ selectedDistance: 2000 })
     } else if (ev.target.value === 'option5km') {
       this.setState({ selectedDistance: 5000 })
+    } else if (ev.target.value === 'all') {
+      this.setState({ selectedDistance: 0 })
     }
-    
   }
 
   // remove selected item from search results and add to selected activities
