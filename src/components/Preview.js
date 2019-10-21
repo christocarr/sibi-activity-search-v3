@@ -8,7 +8,7 @@ import Transport from "./activity-display/Transport";
 import Accessibility from "./activity-display/Accessibility";
 import ContactDetails from "./activity-display/ContactDetails";
 
-const Checkout = ({ selectedActivities, handleActivityRemove, print }) => {
+const Preview = ({ selectedActivities, handleActivityRemove, print }) => {
   const renderedList = selectedActivities.map((item, index) => {
     return (
       <li key={index}>
@@ -66,4 +66,4 @@ const Checkout = ({ selectedActivities, handleActivityRemove, print }) => {
   );
 };
 
-export default Checkout;
+export default Preview;

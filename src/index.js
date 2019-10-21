@@ -8,7 +8,7 @@ import Loading from "./components/Loading";
 import ActivitySearch from "./components/ActivitySearch";
 import PostcodeSearch from './components/PostcodeSearch'
 import SearchResults from "./components/SearchResults";
-import Checkout from "./components/Checkout";
+import Preview from "./components/Preview";
 import Modal from './components/Modal'
 
 import "./styles.css";
@@ -383,7 +383,7 @@ class App extends Component {
                 path="/checkout"
                 render={props => (
                   <>
-                    <Checkout
+                    <Preview
                       {...props}
                       selectedActivities={this.state.selectedActivities}
                       handleActivityRemove={this.handleActivityRemove}
