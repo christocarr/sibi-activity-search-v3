@@ -380,7 +380,7 @@ class App extends Component {
                 </Route>
               )}
               <Route
-                path="/checkout"
+                path="/preview"
                 render={props => (
                   <>
                     <Preview
