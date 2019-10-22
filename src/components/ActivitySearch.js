@@ -16,11 +16,10 @@ const categoryOptions = [
 ];
 
 const ActivitySearch = ({
-  categoryValue,
   handleCategorySelect,
   typeOptions,
   typeValue,
-  handleTypeSelect,
+  typeSelect,
   disableTypeSelect
 }) => {
   //add class to disable type select
@@ -29,7 +28,7 @@ const ActivitySearch = ({
     showTypeSelect = "type-disabled";
   }
   return (
-    <div className="search-container">
+    <div className="select-container">
       <Select
         options={categoryOptions}
         onChange={handleCategorySelect}
@@ -39,8 +38,7 @@ const ActivitySearch = ({
         className={showTypeSelect}
         options={typeOptions}
         value={typeValue}
-        // isMulti
-        onChange={handleTypeSelect}
+        onChange={typeSelect}
         placeholder="then select an activity type"
       />
     </div>

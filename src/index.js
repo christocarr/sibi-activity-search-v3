@@ -6,7 +6,7 @@ import axios from 'axios'
 import Nav from "./components/Nav";
 import Loading from "./components/Loading";
 import ActivitySearch from "./components/ActivitySearch";
-import PostcodeSearch from './components/PostcodeSearch'
+import ActivitySearchForm from './components/ActivitySearchForm'
 import SearchResults from "./components/SearchResults";
 import Preview from "./components/Preview";
 import Modal from './components/Modal'
@@ -247,34 +247,18 @@ class App extends Component {
 
   handleTypeSelect = type => {
     // disable type select if more than 6 types chosen
-    if (type.length > 6) {
-      this.setState({ disableTypeSelect: true });
-    }
+    // if (type.length > 6) {
+    //   this.setState({ disableTypeSelect: true });
+    // }
 
-    this.setState({ selectedType: type }, () => {
-      // return all objects that have the value of the selected type
-      const results = this.state.sibiData.filter(item => {
-        return (
-          item[this.state.selectedCategory] === this.state.selectedType.value
-        );
-      });
-      // then set state with results
-      this.setState({ searchResults: results });
-    });
-
-    // add selected type to array to pass to pdfdocument
-    const selectedTypes = Object.assign([], this.state.selectedActivityTypes);
-    if (selectedTypes.indexOf(type.label) === -1) {
-      selectedTypes.push(type.label)
-    }
-    this.setState({ selectedActivityTypes: selectedTypes })
+    this.setState({ selectedType: type })
   };
 
   handlePostcodeInput = (ev) => {
     this.setState({ postcode: ev.target.value.toUpperCase() })
   }
 
-  handlePostcodeSearch = (ev) => {
+  handleActivitySearch = (ev) => {
     ev.preventDefault()
     const postcode = this.state.postcode.replace(' ', '+')
     axios.get(`https://api.getthedata.com/postcode/${postcode}`)
@@ -289,6 +273,15 @@ class App extends Component {
       .catch(err => {
         console.log('err', err)
       })
+
+      // return all objects that have the value of the selected type
+      const results = this.state.sibiData.filter(item => {
+        return (
+          item[this.state.selectedCategory] === this.state.selectedType.value
+        );
+      });
+      // then set state with results
+      this.setState({ searchResults: results });
   }
 
   handleDistanceSelect = (ev) => {
@@ -301,7 +294,7 @@ class App extends Component {
     }
   }
 
-  // remove selected item from search results and add to selected activities
+  // remove selected item from search results and add to preview
   handleActivitySelect = item => {
     const searchedActivities = Object.assign([], this.state.searchResults);
     const activities = Object.assign([], this.state.selectedActivities);
@@ -322,6 +315,7 @@ class App extends Component {
     );
   };
 
+  // remove an item from preview
   handleActivityRemove = item => {
     const activities = Object.assign([], this.state.selectedActivities);
     activities.splice(item, 1);
@@ -351,23 +345,29 @@ class App extends Component {
                 <Loading />
               ) : (
                 <Route exact path="/">
-                  <PostcodeSearch
+                  <ActivitySearchForm
                     postcode={this.state.postcode}
-                    postcodeSearch={this.handlePostcodeSearch}
+                    activitySearch={this.handleActivitySearch}
                     postcodeChange={this.handlePostcodeInput}
                     latitude={this.state.patientLat}
                     longitude={this.state.patientLong}
                     selectedDistance={this.state.selectedDistance}
                     distanceSelect={this.handleDistanceSelect}
+                    categoryValue={this.state.selectedCategory}
+                    handleCategorySelect={this.handleCategorySelect}
+                    typeOptions={this.state.typeOptions}
+                    typeValue={this.state.selectedType}
+                    typeSelect={this.handleTypeSelect}
+                    disableTypeSelect={this.state.disableTypeSelect}
                   />
-                  <ActivitySearch
+                  {/* <ActivitySearch
                     categoryValue={this.state.selectedCategory}
                     handleCategorySelect={this.handleCategorySelect}
                     typeOptions={this.state.typeOptions}
                     typeValue={this.state.selectedType}
                     handleTypeSelect={this.handleTypeSelect}
                     disableTypeSelect={this.state.disableTypeSelect}
-                  />
+                  /> */}
                   {this.state.searchResults && (
                     <SearchResults
                       searchResults={this.state.searchResults}

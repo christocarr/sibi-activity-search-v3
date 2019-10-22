@@ -1,16 +1,21 @@
 import React from "react";
+import ActivitySearch from './ActivitySearch'
 
-const PostcodeSearch = ({
+const ActivitySearchForm = ({
   postcodeChange,
-  postcodeSearch,
+  activitySearch,
   postcode,
-  latitude,
-  longitude,
   selectedDistance,
-  distanceSelect
+  distanceSelect,
+  categoryValue,
+  handleCategorySelect,
+  typeOptions,
+  typeValue,
+  typeSelect,
+  disableTypeSelect
 }) => {
   return (
-    <form onSubmit={postcodeSearch}>
+    <form onSubmit={activitySearch}>
       <p>Search for activities within a range of patient's postcode</p>
       <div className="postcode-search">
         <label htmlFor="postcodeInput">
@@ -54,10 +59,18 @@ const PostcodeSearch = ({
             />
           </label>
         </div>
-        <input type="submit" value="Search" />
       </div>
+      <ActivitySearch
+        categoryValue={categoryValue}
+        handleCategorySelect={handleCategorySelect}
+        typeOptions={typeOptions}
+        typeValue={typeValue}
+        typeSelect={typeSelect}
+        disableTypeSelect={disableTypeSelect}
+      />
+      <input type="submit" value="Search" />
     </form>
   );
 };
 
-export default PostcodeSearch;
+export default ActivitySearchForm;
