@@ -27,8 +27,7 @@ const ActivitySearchForm = ({
             onChange={postcodeChange}
           />
         </label>
-        <div>
-          <label htmlFor="twoKilometres">
+          <label className="radio-button-label" htmlFor="twoKilometres">
             2km:
             <input
               type="radio"
@@ -38,7 +37,7 @@ const ActivitySearchForm = ({
               onChange={distanceSelect}
             />
           </label>
-          <label htmlFor="fiveKilometres">
+          <label className="radio-button-label" htmlFor="fiveKilometres">
             5km:
             <input
               type="radio"
@@ -48,7 +47,7 @@ const ActivitySearchForm = ({
               onChange={distanceSelect}
             />
           </label>
-          <label htmlFor="all">
+          <label className="radio-button-label" htmlFor="all">
             All:
             <input
               type="radio"
@@ -58,7 +57,6 @@ const ActivitySearchForm = ({
               onChange={distanceSelect}
             />
           </label>
-        </div>
       </div>
       <ActivitySearch
         categoryValue={categoryValue}

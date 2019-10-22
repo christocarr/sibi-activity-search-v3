@@ -246,11 +246,6 @@ class App extends Component {
   };
 
   handleTypeSelect = type => {
-    // disable type select if more than 6 types chosen
-    // if (type.length > 6) {
-    //   this.setState({ disableTypeSelect: true });
-    // }
-
     this.setState({ selectedType: type })
   };
 
@@ -267,21 +262,19 @@ class App extends Component {
           patientLat: res.data.data.latitude,
           patientLong: res.data.data.longitude
         }, () => {
-          //function to perform when data returns
+          // return all objects that have the value of the selected type
+          const results = this.state.sibiData.filter(item => {
+            return (
+              item[this.state.selectedCategory] === this.state.selectedType.value
+            );
+          });
+      // then set state with results
+      this.setState({ searchResults: results });
         })
       })
       .catch(err => {
         console.log('err', err)
       })
-
-      // return all objects that have the value of the selected type
-      const results = this.state.sibiData.filter(item => {
-        return (
-          item[this.state.selectedCategory] === this.state.selectedType.value
-        );
-      });
-      // then set state with results
-      this.setState({ searchResults: results });
   }
 
   handleDistanceSelect = (ev) => {
@@ -360,14 +353,6 @@ class App extends Component {
                     typeSelect={this.handleTypeSelect}
                     disableTypeSelect={this.state.disableTypeSelect}
                   />
-                  {/* <ActivitySearch
-                    categoryValue={this.state.selectedCategory}
-                    handleCategorySelect={this.handleCategorySelect}
-                    typeOptions={this.state.typeOptions}
-                    typeValue={this.state.selectedType}
-                    handleTypeSelect={this.handleTypeSelect}
-                    disableTypeSelect={this.state.disableTypeSelect}
-                  /> */}
                   {this.state.searchResults && (
                     <SearchResults
                       searchResults={this.state.searchResults}
