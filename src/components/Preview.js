@@ -8,7 +8,7 @@ import Transport from "./activity-display/Transport";
 import Accessibility from "./activity-display/Accessibility";
 import ContactDetails from "./activity-display/ContactDetails";
 
-const Preview = ({ selectedActivities, handleActivityRemove, print }) => {
+const Preview = ({ selectedActivities, handleActivityRemove, print, removeAll }) => {
   const renderedList = selectedActivities.map((item, index) => {
     return (
       <li key={index}>
@@ -57,8 +57,11 @@ const Preview = ({ selectedActivities, handleActivityRemove, print }) => {
       {selectedActivities.length > 1 && (
         <p>You have selected {selectedActivities.length} activities.</p>
       )}
-      {selectedActivities.length > 0 ? 
-        <button onClick={print}>Print</button> 
+      {selectedActivities.length > 0 ?
+        <div className="review-button-container">
+          <button onClick={removeAll}>Remove All</button>
+          <button onClick={print}>Print</button>
+        </div>
         : null
       }
       <ul className="activity-list-container">{renderedList}</ul>

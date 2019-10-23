@@ -305,15 +305,10 @@ class App extends Component {
       activities.push(item);
     }
     // activities.push(item)
-    this.setState(
-      {
+    this.setState({
         searchResults: searchedActivities,
         selectedActivities: activities
-      },
-      () => {
-        console.log(this.state.searchResults, this.state.selectedActivities);
-      }
-    );
+      });
   };
 
   // remove an item from preview
@@ -327,6 +322,10 @@ class App extends Component {
     this.setState(prevState => ({ 
       modal: !prevState.modal 
     }))
+  }
+
+  handleRemoveAll = () => {
+    this.setState({ selectedActivities: [] })
   }
 
   handleModalClose = () => {
@@ -383,6 +382,7 @@ class App extends Component {
                       selectedActivities={this.state.selectedActivities}
                       handleActivityRemove={this.handleActivityRemove}
                       print={this.handlePrint}
+                      removeAll={this.handleRemoveAll}
                       modalClose={this.handleModalClose}
                     />
                     { this.state.modal &&
