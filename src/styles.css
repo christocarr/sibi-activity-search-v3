@@ -80,6 +80,13 @@ form p {
   pointer-events: none;
 }
 
+.form-button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/*------------------*/
+
 /* activity search result styles */
 .activity-list-container {
   padding: 0;

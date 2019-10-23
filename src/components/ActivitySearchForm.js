@@ -12,7 +12,8 @@ const ActivitySearchForm = ({
   typeOptions,
   typeValue,
   typeSelect,
-  disableTypeSelect
+  disableTypeSelect,
+  clearForm
 }) => {
   return (
     <form onSubmit={activitySearch}>
@@ -66,7 +67,10 @@ const ActivitySearchForm = ({
         typeSelect={typeSelect}
         disableTypeSelect={disableTypeSelect}
       />
-      <input type="submit" value="Search" />
+      <div className="form-button-container">
+        <input type="button" value="Clear" onClick={clearForm} />
+        <input type="submit" value="Search" />
+      </div>
     </form>
   );
 };

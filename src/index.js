@@ -5,7 +5,6 @@ import Tabletop from "tabletop";
 import axios from 'axios'
 import Nav from "./components/Nav";
 import Loading from "./components/Loading";
-import ActivitySearch from "./components/ActivitySearch";
 import ActivitySearchForm from './components/ActivitySearchForm'
 import SearchResults from "./components/SearchResults";
 import Preview from "./components/Preview";
@@ -20,7 +19,7 @@ class App extends Component {
     selectedCategory: null,
     typeOptions: null,
     disableTypeSelect: true,
-    selectedType: [],
+    selectedType: null,
     postcode: '',
     patientLat: null,
     patientLong: null,
@@ -277,6 +276,15 @@ class App extends Component {
       })
   }
 
+  handleClearForm = () => {
+    this.setState({
+      postcode: '',
+      selectedDistance: null,
+      searchResults: [],
+      selectedType: null,
+    })
+  }
+
   handleDistanceSelect = (ev) => {
     if (ev.target.value === 'option2km') {
       this.setState({ selectedDistance: 2000 })
@@ -352,6 +360,7 @@ class App extends Component {
                     typeValue={this.state.selectedType}
                     typeSelect={this.handleTypeSelect}
                     disableTypeSelect={this.state.disableTypeSelect}
+                    clearForm={this.handleClearForm}
                   />
                   {this.state.searchResults && (
                     <SearchResults
