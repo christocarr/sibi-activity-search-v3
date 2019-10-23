@@ -36,6 +36,10 @@ section {
   margin-top: 1rem;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 /* loading styles */
 .loading-container {
   display: flex;
@@ -74,6 +78,7 @@ form p {
 .select-container {
   margin-bottom: 1rem;
 }
+.select-container 
 
 /*disable activity type select by default*/
 .type-disabled {
@@ -85,6 +90,9 @@ form p {
   justify-content: space-evenly;
 }
 
+.form-button-container input:hover {
+  cursor: pointer;
+}
 /*------------------*/
 
 /* activity search result styles */
@@ -102,10 +110,6 @@ form p {
   text-align: left;
   list-style: none;
   margin-bottom: 2rem;
-}
-
-.add-activity-button:hover, .remove-activity-button:hover {
-  cursor: pointer;
 }
 
 .add-activity-button {
