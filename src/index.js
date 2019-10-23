@@ -50,7 +50,7 @@ class App extends Component {
     this.setState({
       selectedCategory: category.value,
       disableTypeSelect: false,
-      typeOptions: null
+      selectedType: null
     });
 
     if (category.value === "Activity (art & craft)") {
@@ -255,10 +255,12 @@ class App extends Component {
     this.setState({ selectedActivityTypes: selectedType })
   };
 
+  // controls postcode input
   handlePostcodeInput = (ev) => {
     this.setState({ postcode: ev.target.value.toUpperCase() })
   }
 
+  // gets lat long then returns searched activites
   handleActivitySearch = (ev) => {
     ev.preventDefault()
     const postcode = this.state.postcode.replace(' ', '+')
@@ -283,12 +285,14 @@ class App extends Component {
       })
   }
 
+  // clears search form inputs
   handleClearForm = () => {
     this.setState({
       postcode: '',
       selectedDistance: null,
       searchResults: [],
       selectedType: null,
+      selectedCategory: null //does not clear
     })
   }
 
@@ -325,16 +329,19 @@ class App extends Component {
     this.setState({ selectedActivities: activities });
   };
 
+  // open modal to show pdf with print functionality
   handlePrint = () => {
     this.setState(prevState => ({ 
       modal: !prevState.modal 
     }))
   }
 
+  // remove all selected activities from review page
   handleRemoveAll = () => {
     this.setState({ selectedActivities: [] })
   }
 
+  // closes pdf view
   handleModalClose = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
