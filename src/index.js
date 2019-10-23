@@ -245,7 +245,14 @@ class App extends Component {
   };
 
   handleTypeSelect = type => {
-    this.setState({ selectedType: type })
+    this.setState({ selectedType: type }, () => {
+      console.log(this.state.selectedType)
+    })
+    const selectedType = Object.assign([], this.state.selectedActivityTypes)
+    if (selectedType.indexOf(type.label) === -1) {
+      selectedType.push(type.label)
+    }
+    this.setState({ selectedActivityTypes: selectedType })
   };
 
   handlePostcodeInput = (ev) => {
@@ -387,7 +394,7 @@ class App extends Component {
                     />
                     { this.state.modal &&
                     <Modal
-                      selectedType={this.state.selectedActivityTypes}
+                      selectedTypes={this.state.selectedActivityTypes}
                       selectedActivities={this.state.selectedActivities}
                       modalOpen={this.state.modal}
                       modalClose={this.handleModalClose}

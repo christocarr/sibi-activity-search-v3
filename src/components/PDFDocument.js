@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 })
 
 const PDFDocument = ({ activityTypes, activities }) => {
-  
+  console.log(activityTypes)
   const types = activityTypes.map((type, index) => {
     if (activityTypes.length > 1) {
       return `${type}, `
