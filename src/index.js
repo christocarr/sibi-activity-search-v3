@@ -374,7 +374,7 @@ class App extends Component {
                 </Route>
               )}
               <Route
-                path="/preview"
+                path="/review"
                 render={props => (
                   <>
                     <Review
