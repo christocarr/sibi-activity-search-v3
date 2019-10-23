@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 import Loading from "./components/Loading";
 import ActivitySearchForm from './components/ActivitySearchForm'
 import SearchResults from "./components/SearchResults";
-import Preview from "./components/Preview";
+import Review from "./components/Review";
 import Modal from './components/Modal'
 
 import "./styles.css";
@@ -377,7 +377,7 @@ class App extends Component {
                 path="/preview"
                 render={props => (
                   <>
-                    <Preview
+                    <Review
                       {...props}
                       selectedActivities={this.state.selectedActivities}
                       handleActivityRemove={this.handleActivityRemove}

@@ -8,7 +8,7 @@ import Transport from "./activity-display/Transport";
 import Accessibility from "./activity-display/Accessibility";
 import ContactDetails from "./activity-display/ContactDetails";
 
-const Preview = ({ selectedActivities, handleActivityRemove, print, removeAll }) => {
+const Review = ({ selectedActivities, handleActivityRemove, print, removeAll }) => {
   const renderedList = selectedActivities.map((item, index) => {
     return (
       <li key={index}>
@@ -69,4 +69,4 @@ const Preview = ({ selectedActivities, handleActivityRemove, print, removeAll })
   );
 };
 
-export default Preview;
+export default Review;
