@@ -31,6 +31,7 @@ Want to contribute? Great!
 * Modify all default button styles
 * Sort distance results by nearest first
 * Add div to show selected, removed and no items due to selected range
+* Fix nav menu and search form when scrolling down
 
 License
 ----
