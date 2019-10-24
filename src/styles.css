@@ -11,10 +11,20 @@ body {
 }
 
 nav {
+  height: 6rem;
+}
+
+.nav-items-container {
   display: flex;
   justify-content: space-around;
   align-content: center;
+  width: 90vw;
+  margin: auto;
 }
+
+/* .nav-items-container img {
+  width: 80%;
+} */
 
 nav ul {
   display: flex;
@@ -186,6 +196,9 @@ iframe {
 }
 
 @media screen and (min-width: 768px) {
+  .nav-items-container {
+    width: 80vw;
+  }
   .container {
     width: 80vw;
   }
