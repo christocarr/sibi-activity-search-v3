@@ -28,7 +28,6 @@ Want to contribute? Great!
 
 ### Todos
 
-* Add button component to replace all buttons
 * Modify all default button styles
 * Sort distance results by nearest first
 * Add div to show selected, removed and no items due to selected range

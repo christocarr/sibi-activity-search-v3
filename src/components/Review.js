@@ -47,15 +47,15 @@ const Review = ({ selectedActivities, handleActivityRemove, print, removeAll }) 
   return (
     <div>
       {selectedActivities.length === 0 && (
-        <p>
+        <p className="message">
           There are no activities to review. Please search and select activities
         </p>
       )}
       {selectedActivities.length === 1 && (
-        <p>You have selected {selectedActivities.length} activity.</p>
+        <p className="message">You have selected {selectedActivities.length} activity.</p>
       )}
       {selectedActivities.length > 1 && (
-        <p>You have selected {selectedActivities.length} activities.</p>
+        <p className="message">You have selected {selectedActivities.length} activities.</p>
       )}
       {selectedActivities.length > 0 ?
         <div className="review-button-container">

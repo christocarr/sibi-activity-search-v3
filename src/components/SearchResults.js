@@ -47,7 +47,7 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
       return item
     }
 
-    // return all items if all option is chosen
+    // return all items if the All option is chosen
     if (selectedDistance === 0) {
       return item
     }
@@ -101,10 +101,6 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
 
   return (
     <div>
-      {renderedList.length === 0 && selectedDistance === 2000 
-        ? <Message message={`Please select 5km or All. There might be activities further away.`} /> 
-        : null
-      }
       <ul className="activity-list-container">{renderedList}</ul>
     </div>
   )
