@@ -22,10 +22,6 @@ nav {
   margin: auto;
 }
 
-/* .nav-items-container img {
-  width: 80%;
-} */
-
 nav ul {
   display: flex;
   justify-content: center;
@@ -98,6 +94,12 @@ form p {
 .form-button-container {
   display: flex;
   justify-content: space-evenly;
+}
+
+.form-button-container input,
+.review-button-container button {
+  width: 6rem;
+  padding: 0.3rem 0.5rem;
 }
 
 .form-button-container input:hover {
