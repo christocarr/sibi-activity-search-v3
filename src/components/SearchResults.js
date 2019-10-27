@@ -1,5 +1,6 @@
 import React from "react";
 import { getDistance } from 'geolib';
+import Message from './Message'
 import NameOfService from "./activity-display/NameOfService";
 import Address from "./activity-display/Address";
 import OtherInfo from "./activity-display/OtherInfo";
@@ -11,6 +12,7 @@ import ContactDetails from "./activity-display/ContactDetails";
 
 const SearchResults = ({ searchResults, handleSelect, selectedActivities, patientLatitude, patientLongitude, selectedDistance }) => {
   let filterList = [];
+  let message = `Start searching`
 
   // filter search results by date last check is no later than 18 months
   filterList = searchResults.filter(item => {
@@ -29,6 +31,11 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
 
   // filter list by nearest activities with given postcode
   filterList = filterList.filter(item => {
+    // if selected distance is null 
+    if (selectedDistance === null) {
+      message = `Please choose a range.`
+    }
+
     let distance = 0
     // if user has not search for nearest activities
     if (patientLatitude === 0) {
@@ -40,14 +47,20 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
         { latitude: item.Latitude, longitude: item.Longitude }
       )
     }
+
     // if distance is equal or less than chosen range then return item
     if (distance <= selectedDistance) {
-      console.log(distance)
       return item
     }
+
     // return all items if all option is chosen
     if (selectedDistance === 0) {
       return item
+    }
+
+    //if no activities because of selected range
+    if (filterList.length) {
+      message = `Please choose 5km or All. There might be activities further away.`
     }
   });
 
@@ -95,7 +108,14 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
       );
     }
   });
-  return <ul className="activity-list-container">{renderedList}</ul>;
+
+  return (
+    <div>
+      {filterList.length === 0 && <Message className="message" message={message} />}
+      <ul className="activity-list-container">{renderedList}</ul>
+    </div>
+  )
+
 };
 
 export default SearchResults;
