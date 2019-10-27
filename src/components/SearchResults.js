@@ -12,8 +12,6 @@ import ContactDetails from "./activity-display/ContactDetails";
 
 const SearchResults = ({ searchResults, handleSelect, selectedActivities, patientLatitude, patientLongitude, selectedDistance }) => {
   let filterList = [];
-  let message = `Start searching`
-
   // filter search results by date last check is no later than 18 months
   filterList = searchResults.filter(item => {
     const dateNow = Date.now();
@@ -31,10 +29,6 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
 
   // filter list by nearest activities with given postcode
   filterList = filterList.filter(item => {
-    // if selected distance is null 
-    if (selectedDistance === null) {
-      message = `Please choose a range.`
-    }
 
     let distance = 0
     // if user has not search for nearest activities
@@ -58,10 +52,6 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
       return item
     }
 
-    //if no activities because of selected range
-    if (filterList.length) {
-      message = `Please choose 5km or All. There might be activities further away.`
-    }
   });
 
   const renderedList = filterList.map((item, index) => {
@@ -111,7 +101,10 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
 
   return (
     <div>
-      {filterList.length === 0 && <Message message={message} />}
+      {renderedList.length === 0 && selectedDistance === 2000 
+        ? <Message message={`Please select 5km or All. There might be activities further away.`} /> 
+        : null
+      }
       <ul className="activity-list-container">{renderedList}</ul>
     </div>
   )
