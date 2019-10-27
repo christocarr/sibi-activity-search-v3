@@ -111,7 +111,7 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
 
   return (
     <div>
-      {filterList.length === 0 && <Message className="message" message={message} />}
+      {filterList.length === 0 && <Message message={message} />}
       <ul className="activity-list-container">{renderedList}</ul>
     </div>
   )

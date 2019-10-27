@@ -105,6 +105,12 @@ form p {
 }
 /*------------------*/
 
+/* user message styles */
+.message {
+  padding: 2rem;
+  background-color: lightgoldenrodyellow;
+}
+
 /* activity search result styles */
 .review-button-container {
   display: flex;
