@@ -27,6 +27,7 @@ const ActivitySearchForm = ({
             value={postcode}
             onChange={postcodeChange}
             placeholder="e.g. HA9 0LH"
+            autoFocus
           />
         </label>
           <label className="radio-button-label" htmlFor="twoKilometres">
