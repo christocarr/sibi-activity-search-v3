@@ -289,7 +289,7 @@ class App extends Component {
   handleClearForm = () => {
     this.setState({
       postcode: '',
-      selectedDistance: null,
+      selectedDistance: 0,
       searchResults: [],
       selectedType: null,
       selectedCategory: null //does not clear
