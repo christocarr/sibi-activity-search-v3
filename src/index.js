@@ -263,16 +263,14 @@ class App extends Component {
   // gets lat long then returns searched activites
   handleActivitySearch = (ev) => {
     ev.preventDefault()
+    //if no postcode entered show message
     if (this.state.postcode === '') {
       this.setState({ message: 'Please enter a postcode' }, () => {
-        console.log(this.state.message)
       })
     } else if (this.state.postcode !== '') {
       this.setState({ message: '' }, () => {
-        console.log(this.state.message)
       })
     }
-    console.log('postcode: ', this.state.postcode)
   
     const postcode = this.state.postcode.replace(' ', '+')
     axios.get(`https://api.getthedata.com/postcode/${postcode}`)
