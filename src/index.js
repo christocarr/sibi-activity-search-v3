@@ -339,6 +339,7 @@ class App extends Component {
   // remove all selected activities from review page
   handleRemoveAll = () => {
     this.setState({ selectedActivities: [] })
+    this.setState({ selectedActivityTypes: [] })
   }
 
   // closes pdf view
