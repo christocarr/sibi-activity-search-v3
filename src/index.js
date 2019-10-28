@@ -23,7 +23,7 @@ class App extends Component {
     postcode: '',
     patientLat: null,
     patientLong: null,
-    selectedDistance: null,
+    selectedDistance: 0,
     searchResults: [],
     selectedActivityTypes: [],
     selectedActivities: [],
