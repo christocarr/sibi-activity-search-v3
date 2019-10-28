@@ -9,6 +9,7 @@ import ActivitySearchForm from './components/ActivitySearchForm'
 import SearchResults from "./components/SearchResults";
 import Review from "./components/Review";
 import Modal from './components/Modal'
+import Message from './components/Message'
 
 import "./styles.css";
 
@@ -28,6 +29,7 @@ class App extends Component {
     selectedActivityTypes: [],
     selectedActivities: [],
     modal: false,
+    message: '',
   };
 
   componentDidMount() {
@@ -245,14 +247,12 @@ class App extends Component {
   };
 
   handleTypeSelect = type => {
-    this.setState({ selectedType: type }, () => {
-      console.log(this.state.selectedType)
-    })
-    const selectedType = Object.assign([], this.state.selectedActivityTypes)
-    if (selectedType.indexOf(type.label) === -1) {
-      selectedType.push(type.label)
-    }
-    this.setState({ selectedActivityTypes: selectedType })
+    this.setState({ selectedType: type })
+    // const selectedType = Object.assign([], this.state.selectedActivityTypes)
+    // if (selectedType.indexOf(type.label) === -1) {
+    //   selectedType.push(type.label)
+    // }
+    // this.setState({ selectedActivityTypes: selectedType })
   };
 
   // controls postcode input
@@ -263,6 +263,17 @@ class App extends Component {
   // gets lat long then returns searched activites
   handleActivitySearch = (ev) => {
     ev.preventDefault()
+    if (this.state.postcode === '') {
+      this.setState({ message: 'Please enter a postcode' }, () => {
+        console.log(this.state.message)
+      })
+    } else if (this.state.postcode !== '') {
+      this.setState({ message: '' }, () => {
+        console.log(this.state.message)
+      })
+    }
+    console.log('postcode: ', this.state.postcode)
+  
     const postcode = this.state.postcode.replace(' ', '+')
     axios.get(`https://api.getthedata.com/postcode/${postcode}`)
       .then(res => {
@@ -275,9 +286,9 @@ class App extends Component {
             return (
               item[this.state.selectedCategory] === this.state.selectedType.value
             );
-          });
-      // then set state with results
-      this.setState({ searchResults: results });
+          });  
+          //if postcode entered then set state with results
+          this.setState({ searchResults: results });
         })
       })
       .catch(err => {
@@ -376,6 +387,7 @@ class App extends Component {
                     disableTypeSelect={this.state.disableTypeSelect}
                     clearForm={this.handleClearForm}
                   />
+                  {this.state.message !== '' ? <Message message={this.state.message} /> : null}
                   {this.state.searchResults && (
                     <SearchResults
                       searchResults={this.state.searchResults}
