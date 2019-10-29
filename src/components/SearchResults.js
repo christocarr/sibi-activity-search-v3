@@ -35,7 +35,7 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
     if (patientLatitude === 0) {
       return item
     } else if ( patientLatitude > 0) {
-      // use getDistance package to find distance between first and second coordinates
+      // use geoLib package to find distance between first and second coordinates
       distance = getDistance(
         { latitude: patientLatitude, longitude: patientLongitude },
         { latitude: item.Latitude, longitude: item.Longitude }
@@ -51,6 +51,7 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
     if (selectedDistance === 0) {
       return item
     }
+    console.log(distance)
 
   });
 
