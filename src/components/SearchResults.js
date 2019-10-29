@@ -1,6 +1,5 @@
 import React from "react";
 import { getDistance } from 'geolib';
-import Message from './Message'
 import NameOfService from "./activity-display/NameOfService";
 import Address from "./activity-display/Address";
 import OtherInfo from "./activity-display/OtherInfo";
@@ -40,6 +39,7 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
         { latitude: patientLatitude, longitude: patientLongitude },
         { latitude: item.Latitude, longitude: item.Longitude }
       )
+      
     }
 
     // if distance is equal or less than chosen range then return item
@@ -87,7 +87,7 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
             Website={item.Website}
             OtherContactInfo={item.OtherContactInfo}
           />
-          <button onClick={handleSelect.bind(this, item)}className="add-activity-button">Select</button>
+          <button onClick={handleSelect.bind(this, item)} className="add-activity-button">Select</button>
         </li>
       );
     } else if (selectedActivities.indexOf(item) !== -1) {

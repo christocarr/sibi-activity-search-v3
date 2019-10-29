@@ -248,11 +248,6 @@ class App extends Component {
 
   handleTypeSelect = type => {
     this.setState({ selectedType: type })
-    // const selectedType = Object.assign([], this.state.selectedActivityTypes)
-    // if (selectedType.indexOf(type.label) === -1) {
-    //   selectedType.push(type.label)
-    // }
-    // this.setState({ selectedActivityTypes: selectedType })
   };
 
   // controls postcode input
@@ -260,7 +255,7 @@ class App extends Component {
     this.setState({ postcode: ev.target.value.toUpperCase() })
   }
 
-  // gets lat long then returns searched activites
+  // gets lat long then returns searched activities
   handleActivitySearch = (ev) => {
     ev.preventDefault()
     //if no postcode entered show message
@@ -317,6 +312,15 @@ class App extends Component {
 
   // remove selected item from search results and add to preview
   handleActivitySelect = item => {
+    // add activity type to array to pass to pdf document
+    let str = item.ActivityType
+    // trim off unwanted text from string
+    str = str.substring(str.indexOf('-') + 1)
+    const selectedTypes = Object.assign([], this.state.selectedActivityTypes);
+    // if string not in array then push to array
+    if (selectedTypes.indexOf(str) === -1) {
+      selectedTypes.push(str)
+    }
     const searchedActivities = Object.assign([], this.state.searchResults);
     const activities = Object.assign([], this.state.selectedActivities);
     searchedActivities.splice(item, 1);
@@ -324,18 +328,25 @@ class App extends Component {
     if (activities.indexOf(item) === -1) {
       activities.push(item);
     }
-    // activities.push(item)
     this.setState({
-        searchResults: searchedActivities,
-        selectedActivities: activities
-      });
+      searchResults: searchedActivities,
+      selectedActivities: activities,
+      selectedActivityTypes: selectedTypes
+    });
   };
 
-  // remove an item from preview
+  // remove an item from preview and from selected activity types
   handleActivityRemove = item => {
+    let str = item.ActivityType
+    str = str.substring(str.indexOf('-') +1)
     const activities = Object.assign([], this.state.selectedActivities);
+    const activityTypes = Object.assign([], this.state.selectedActivityTypes)
     activities.splice(item, 1);
-    this.setState({ selectedActivities: activities });
+    activityTypes.splice(str, 1)
+    this.setState({ 
+      selectedActivities: activities,
+      selectedActivityTypes: activityTypes
+    });
   };
 
   // open modal to show pdf with print functionality
