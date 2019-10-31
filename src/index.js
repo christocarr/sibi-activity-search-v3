@@ -279,7 +279,15 @@ class App extends Component {
             return (
               item[this.state.selectedCategory] === this.state.selectedType.value
             );
-          });  
+          });
+          let arrayOfPoints = []
+          const array = results.map(item => {
+            return arrayOfPoints.push({
+              lat: item.Latitude,
+              lon: item.Longitude
+            })
+          })
+          console.log(array)
           //if postcode entered then set state with results
           this.setState({ searchResults: results });
         })

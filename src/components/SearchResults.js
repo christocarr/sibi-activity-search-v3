@@ -30,29 +30,26 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
   filterList = filterList.filter(item => {
 
     let distance = 0
-    // if user has not search for nearest activities
-    if (patientLatitude === 0) {
-      return item
-    } else if ( patientLatitude > 0) {
+    // if user entered postcode
+    if ( patientLatitude > 0) {
       // use geoLib package to find distance between first and second coordinates
       distance = getDistance(
         { latitude: patientLatitude, longitude: patientLongitude },
         { latitude: item.Latitude, longitude: item.Longitude }
       )
-      
     }
-
     // if distance is equal or less than chosen range then return item
     if (distance <= selectedDistance) {
+      console.log(distance)
       return item
     }
 
     // return all items if the All option is chosen
     if (selectedDistance === 0) {
+      console.log(distance)
       return item
     }
-    console.log(distance)
-
+    
   });
 
   const renderedList = filterList.map((item, index) => {
