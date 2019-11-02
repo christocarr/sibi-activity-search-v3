@@ -285,23 +285,18 @@ class App extends Component {
           let arrayOfPoints = []
           results.map(item => {
             return arrayOfPoints.push({
-              lat: item.Latitude,
-              lon: item.Longitude
+              latitude: item.Latitude,
+              longitude: item.Longitude
             })
           })
+          console.log('array of points:', arrayOfPoints)
           resultsByDistance = orderByDistance(
             {latitude: this.state.patientLat, longitude: this.state.patientLong}, 
-            [arrayOfPoints]
+            [...arrayOfPoints]
           )
-          const activities = results.map(item => {
-            return resultsByDistance.map(array => {
-              return array.filter(i => {
-                return item.Latitude === i.lat
-              })
-            })
-          })
-          // this.setState({ searchResults: results });
-          this.setState({ searchResults: [...activities] });
+          console.log('results by distande: ', resultsByDistance)
+          this.setState({ searchResults: results });
+          // this.setState({ searchResults: [...activities] });
 
         })
       })
