@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Tabletop from "tabletop";
+import { orderByDistance } from 'geolib'
 import axios from 'axios'
 import Nav from "./components/Nav";
 import Loading from "./components/Loading";
@@ -268,6 +269,7 @@ class App extends Component {
     }
   
     const postcode = this.state.postcode.replace(' ', '+')
+    let resultsByDistance
     axios.get(`https://api.getthedata.com/postcode/${postcode}`)
       .then(res => {
         this.setState({ 
@@ -281,15 +283,26 @@ class App extends Component {
             );
           });
           let arrayOfPoints = []
-          const array = results.map(item => {
+          results.map(item => {
             return arrayOfPoints.push({
               lat: item.Latitude,
               lon: item.Longitude
             })
           })
-          console.log(array)
-          //if postcode entered then set state with results
-          this.setState({ searchResults: results });
+          resultsByDistance = orderByDistance(
+            {latitude: this.state.patientLat, longitude: this.state.patientLong}, 
+            [arrayOfPoints]
+          )
+          const activities = results.map(item => {
+            return resultsByDistance.map(array => {
+              return array.filter(i => {
+                return item.Latitude === i.lat
+              })
+            })
+          })
+          // this.setState({ searchResults: results });
+          this.setState({ searchResults: [...activities] });
+
         })
       })
       .catch(err => {
