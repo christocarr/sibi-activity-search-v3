@@ -10,7 +10,6 @@ import Accessibility from "./activity-display/Accessibility";
 import ContactDetails from "./activity-display/ContactDetails";
 
 const SearchResults = ({ searchResults, handleSelect, selectedActivities, patientLatitude, patientLongitude, selectedDistance }) => {
-  console.log(searchResults)
   let filterList = [];
   // filter search results by date last check is no later than 18 months
   filterList = searchResults.filter(item => {
