@@ -282,6 +282,7 @@ class App extends Component {
               item[this.state.selectedCategory] === this.state.selectedType.value
             );
           });
+          // create new array and push only lat long coords
           let arrayOfPoints = []
           results.map(item => {
             return arrayOfPoints.push({
@@ -289,14 +290,19 @@ class App extends Component {
               longitude: item.Longitude
             })
           })
-          console.log('array of points:', arrayOfPoints)
+          // use new arrayOfPoints to sort coords by nearest
           resultsByDistance = orderByDistance(
             {latitude: this.state.patientLat, longitude: this.state.patientLong}, 
             [...arrayOfPoints]
           )
-          console.log('results by distande: ', resultsByDistance)
-          this.setState({ searchResults: results });
-          // this.setState({ searchResults: [...activities] });
+          // map over sorted coords and find items with same lat coord
+          const sortedResults = resultsByDistance.map(item => {
+            return results.find(i => {
+              return i.Latitude === item.latitude
+            })
+          })
+          // set state with sorted coords array
+          this.setState({ searchResults: sortedResults });
 
         })
       })
