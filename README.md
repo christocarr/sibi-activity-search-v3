@@ -28,7 +28,6 @@ Want to contribute? Great!
 
 ### Todos
 
-* Sort distance results by nearest first
 * Fix nav menu and search form to top when scrolling down
 * Add loading when search is clicked
 
