@@ -37,7 +37,7 @@ class App extends Component {
     this.setState({ loading: true }, () => {
       Tabletop.init({
         key:
-          "https://docs.google.com/spreadsheets/d/1fCEncFdCd_Fy1HbuBQrqvVWr4RNE5VOt4eRyDGxY6Cg/edit?usp=sharing",
+          "https://docs.google.com/spreadsheets/d/1qdTeHFyeiyY3TOwaiQWzSq_LABC5P9ql_pMl-rsmde8/edit?usp=sharing",
         callback: data => {
           this.setState({
             sibiData: data
