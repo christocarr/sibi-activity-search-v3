@@ -41,6 +41,8 @@ class App extends Component {
         callback: data => {
           this.setState({
             sibiData: data
+          },() => {
+            console.log(data)
           });
           this.setState({ loading: false });
         },
