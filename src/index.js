@@ -41,8 +41,6 @@ class App extends Component {
         callback: data => {
           this.setState({
             sibiData: data
-          },() => {
-            console.log(data)
           });
           this.setState({ loading: false });
         },
@@ -280,10 +278,9 @@ class App extends Component {
         }, () => {
           // return all objects that have the value of the selected type
           const results = this.state.sibiData.filter(item => {
-            return (
-              item[this.state.selectedCategory] === this.state.selectedType.value
-            );
+            return item[this.state.selectedCategory] === this.state.selectedType.value
           });
+
           // create new array and push only lat long coords
           let arrayOfPoints = []
           results.map(item => {
@@ -292,20 +289,27 @@ class App extends Component {
               longitude: item.Longitude
             })
           })
+
           // use new arrayOfPoints to sort coords by nearest
           resultsByDistance = orderByDistance(
             {latitude: this.state.patientLat, longitude: this.state.patientLong}, 
             [...arrayOfPoints]
           )
-          // map over sorted coords and find items with same lat coord
+
+          console.log('results: ', results)
+          console.log('results by distance: ', resultsByDistance)
+
+          // ERROR map over sorted coords and find and return items with same lat coord
           const sortedResults = resultsByDistance.map(item => {
             return results.find(i => {
               return i.Latitude === item.latitude
             })
           })
-          // set state with sorted coords array
-          //this.setState({ searchResults: sortedResults });
-            this.setState({ searchResults: results });
+
+          console.log(sortedResults.length)
+
+          //set state with sorted coords array
+          this.setState({ searchResults: sortedResults });
         })
       })
       .catch(err => {
