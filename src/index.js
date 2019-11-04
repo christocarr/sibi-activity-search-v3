@@ -302,8 +302,8 @@ class App extends Component {
             })
           })
           // set state with sorted coords array
-          this.setState({ searchResults: sortedResults });
-
+          //this.setState({ searchResults: sortedResults });
+            this.setState({ searchResults: results });
         })
       })
       .catch(err => {
