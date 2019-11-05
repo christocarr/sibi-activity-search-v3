@@ -376,6 +376,12 @@ class App extends Component {
       selectedActivities: activities,
       selectedActivityTypes: activityTypes
     });
+    //add back to searched activities
+    const searchedActivities = Object.assign([], this.state.searchResults);
+    if (searchedActivities.indexOf(item) === -1) {
+      searchedActivities.push(item)
+    }
+    this.setState({ searchResults: searchedActivities })
   };
 
   // open modal to show pdf with print functionality
