@@ -54,7 +54,7 @@ class App extends Component {
       selectedCategory: category.value,
       disableTypeSelect: false,
       selectedType: null
-    });
+    }, () => console.log('selected category: ', this.state.selectedCategory));
 
     if (category.value === "Activity (art & craft)") {
       this.setState({
@@ -248,7 +248,7 @@ class App extends Component {
   };
 
   handleTypeSelect = type => {
-    this.setState({ selectedType: type })
+    this.setState({ selectedType: type }, () => console.log('selected type: ', this.state.selectedType))
   };
 
   // controls postcode input
@@ -259,13 +259,13 @@ class App extends Component {
   // gets lat long then returns searched activities
   handleActivitySearch = (ev) => {
     ev.preventDefault()
-    //if no postcode entered show message
+    //if no postcode or partial postcode entered show message
     if (this.state.postcode === '') {
-      this.setState({ message: 'Please enter a postcode' }, () => {
-      })
+      this.setState({ message: 'Please enter a postcode.' })
+    } else if (this.state.postcode.length < 8) {
+      this.setState({ message: 'Please enter a full postcode.' })
     } else if (this.state.postcode !== '') {
-      this.setState({ message: '' }, () => {
-      })
+      this.setState({ message: '' })
     }
   
     const postcode = this.state.postcode.replace(' ', '+')
@@ -278,6 +278,8 @@ class App extends Component {
         }, () => {
           // return all objects that have the value of the selected type
           const results = this.state.sibiData.filter(item => {
+            console.log('item : ', item[this.state.selectedCategory])
+            console.log('selected type value: ', this.state.selectedType.value)
             return item[this.state.selectedCategory] === this.state.selectedType.value
           });
 
@@ -296,17 +298,7 @@ class App extends Component {
             [...arrayOfPoints]
           )
 
-          console.log('results: ', results)
-          console.log('results by distance: ', resultsByDistance)
-
-          // ERROR map over sorted coords and find and return items with same lat coord
-          // const sortedResults = resultsByDistance.map(item => {
-          //   return results.find(i => {
-          //     return i.Latitude === item.latitude
-          //   })
-          // })
-          // const sortedResults = resultsByDistance.filter(item => results.find(i => i.Latitude === item.latitude))
-          //const sortedResults = results.filter(item => resultsByDistance.find(i => i.Latitude === item.latitude))
+          //go over sorted coords and find and return items with same lat coord
             let array = []
             resultsByDistance.forEach(item => {
               results.forEach(i => {
@@ -315,8 +307,6 @@ class App extends Component {
                 }
               })
             })
-
-          console.log(array, array.length)
 
           //set state with sorted coords array
           this.setState({ searchResults: array });
