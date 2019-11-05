@@ -300,16 +300,26 @@ class App extends Component {
           console.log('results by distance: ', resultsByDistance)
 
           // ERROR map over sorted coords and find and return items with same lat coord
-          const sortedResults = resultsByDistance.map(item => {
-            return results.find(i => {
-              return i.Latitude === item.latitude
+          // const sortedResults = resultsByDistance.map(item => {
+          //   return results.find(i => {
+          //     return i.Latitude === item.latitude
+          //   })
+          // })
+          // const sortedResults = resultsByDistance.filter(item => results.find(i => i.Latitude === item.latitude))
+          //const sortedResults = results.filter(item => resultsByDistance.find(i => i.Latitude === item.latitude))
+            let array = []
+            resultsByDistance.forEach(item => {
+              results.forEach(i => {
+                if(i.Latitude === item.latitude) {
+                  array.push(i)
+                }
+              })
             })
-          })
 
-          console.log(sortedResults.length)
+          console.log(array, array.length)
 
           //set state with sorted coords array
-          this.setState({ searchResults: sortedResults });
+          this.setState({ searchResults: array });
         })
       })
       .catch(err => {
