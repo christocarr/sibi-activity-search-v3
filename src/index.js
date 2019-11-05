@@ -262,7 +262,7 @@ class App extends Component {
     //if no postcode or partial postcode entered show message
     if (this.state.postcode === '') {
       this.setState({ message: 'Please enter a postcode.' })
-    } else if (this.state.postcode.length < 8) {
+    } else if (this.state.postcode.length < 7) {
       this.setState({ message: 'Please enter a full postcode.' })
     } else if (this.state.postcode !== '') {
       this.setState({ message: '' })
@@ -314,6 +314,7 @@ class App extends Component {
       })
       .catch(err => {
         console.log('err', err)
+        this.setState({ message: 'Please enter a full postcode.' })
       })
   }
 
