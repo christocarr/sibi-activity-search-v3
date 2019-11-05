@@ -310,7 +310,7 @@ class App extends Component {
             let array = []
             resultsByDistance.forEach(item => {
               results.forEach(i => {
-                if(i.Latitude === item.latitude) {
+                if(i.Latitude === item.latitude && array.indexOf(i) === -1) {
                   array.push(i)
                 }
               })
