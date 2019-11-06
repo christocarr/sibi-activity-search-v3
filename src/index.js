@@ -270,6 +270,7 @@ class App extends Component {
   
     const postcode = this.state.postcode.replace(' ', '+')
     let resultsByDistance
+    if (postcode.length > 6 && postcode !== '') {
     axios.get(`https://api.getthedata.com/postcode/${postcode}`)
       .then(res => {
         this.setState({ 
@@ -316,6 +317,7 @@ class App extends Component {
         console.log('err', err)
         this.setState({ message: 'Please enter a full postcode.' })
       })
+    }
   }
 
   // clears search form inputs
