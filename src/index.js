@@ -264,58 +264,61 @@ class App extends Component {
       this.setState({ message: 'Please enter a postcode.' })
     } else if (this.state.postcode.length < 7) {
       this.setState({ message: 'Please enter a full postcode.' })
-    } else if (this.state.postcode !== '') {
+    } else if (this.state.selectedType === null) {
+      this.setState({ message: 'Please select an activity type.' })
+    } else {
       this.setState({ message: '' })
     }
   
+    console.log(this.state.selectedType)
     const postcode = this.state.postcode.replace(' ', '+')
     let resultsByDistance
-    if (postcode.length > 6 && postcode !== '') {
-    axios.get(`https://api.getthedata.com/postcode/${postcode}`)
-      .then(res => {
-        this.setState({ 
-          patientLat: res.data.data.latitude,
-          patientLong: res.data.data.longitude
-        }, () => {
-          // return all objects that have the value of the selected type
-          const results = this.state.sibiData.filter(item => {
-            console.log('item : ', item[this.state.selectedCategory])
-            console.log('selected type value: ', this.state.selectedType.value)
-            return item[this.state.selectedCategory] === this.state.selectedType.value
-          });
+    if (postcode.length > 6 && postcode !== '' && this.state.selectedType !== null) {
+      axios.get(`https://api.getthedata.com/postcode/${postcode}`)
+        .then(res => {
+          this.setState({ 
+            patientLat: res.data.data.latitude,
+            patientLong: res.data.data.longitude
+          }, () => {
+            // return all objects that have the value of the selected type
+            const results = this.state.sibiData.filter(item => {
+              console.log('item : ', item[this.state.selectedCategory])
+              console.log('selected type value: ', this.state.selectedType.value)
+              return item[this.state.selectedCategory] === this.state.selectedType.value
+            });
 
-          // create new array and push only lat long coords
-          let arrayOfPoints = []
-          results.map(item => {
-            return arrayOfPoints.push({
-              latitude: item.Latitude,
-              longitude: item.Longitude
-            })
-          })
-
-          // use new arrayOfPoints to sort coords by nearest
-          resultsByDistance = orderByDistance(
-            {latitude: this.state.patientLat, longitude: this.state.patientLong}, 
-            [...arrayOfPoints]
-          )
-
-          //go over sorted coords and find and return items with same lat coord
-            let array = []
-            resultsByDistance.forEach(item => {
-              results.forEach(i => {
-                if(i.Latitude === item.latitude && array.indexOf(i) === -1) {
-                  array.push(i)
-                }
+            // create new array and push only lat long coords
+            let arrayOfPoints = []
+            results.map(item => {
+              return arrayOfPoints.push({
+                latitude: item.Latitude,
+                longitude: item.Longitude
               })
             })
 
-          //set state with sorted coords array
-          this.setState({ searchResults: array });
+            // use new arrayOfPoints to sort coords by nearest
+            resultsByDistance = orderByDistance(
+              {latitude: this.state.patientLat, longitude: this.state.patientLong}, 
+              [...arrayOfPoints]
+            )
+
+            //go over sorted coords and find and return items with same lat coord
+              let array = []
+              resultsByDistance.forEach(item => {
+                results.forEach(i => {
+                  if(i.Latitude === item.latitude && array.indexOf(i) === -1) {
+                    array.push(i)
+                  }
+                })
+              })
+
+            //set state with sorted coords array
+            this.setState({ searchResults: array });
+          })
         })
-      })
-      .catch(err => {
-        console.log('err', err)
-        this.setState({ message: 'Please enter a full postcode.' })
+        .catch(err => {
+          console.log('err', err)
+          this.setState({ message: 'Please enter a full postcode.' })
       })
     }
   }
