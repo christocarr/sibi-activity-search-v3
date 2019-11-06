@@ -113,6 +113,7 @@ form p {
 
 /* user message styles */
 .message {
+  font-weight: bold;
   padding: 2rem;
   background-color: lightgoldenrodyellow;
 }
