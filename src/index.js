@@ -274,9 +274,11 @@ class App extends Component {
     const postcode = this.state.postcode.replace(' ', '+')
     let resultsByDistance
     if (postcode.length > 6 && postcode !== '' && this.state.selectedType !== null) {
+      this.setState({ loading: true })
       axios.get(`https://api.getthedata.com/postcode/${postcode}`)
         .then(res => {
-          this.setState({ 
+          this.setState({
+            loading: false,
             patientLat: res.data.data.latitude,
             patientLong: res.data.data.longitude
           }, () => {
@@ -415,39 +417,37 @@ class App extends Component {
         <div className="App">
           <Nav />
           <div className="container">
+            <Loading loading={this.state.loading} />
             <Switch>
-              {this.state.loading ? (
-                <Loading />
-              ) : (
-                <Route exact path="/">
-                  <ActivitySearchForm
-                    postcode={this.state.postcode}
-                    activitySearch={this.handleActivitySearch}
-                    postcodeChange={this.handlePostcodeInput}
-                    latitude={this.state.patientLat}
-                    longitude={this.state.patientLong}
+              <Route exact path="/">
+                <ActivitySearchForm
+                  postcode={this.state.postcode}
+                  activitySearch={this.handleActivitySearch}
+                  postcodeChange={this.handlePostcodeInput}
+                  latitude={this.state.patientLat}
+                  longitude={this.state.patientLong}
+                  selectedDistance={this.state.selectedDistance}
+                  distanceSelect={this.handleDistanceSelect}
+                  categoryValue={this.state.selectedCategory}
+                  handleCategorySelect={this.handleCategorySelect}
+                  typeOptions={this.state.typeOptions}
+                  typeValue={this.state.selectedType}
+                  typeSelect={this.handleTypeSelect}
+                  disableTypeSelect={this.state.disableTypeSelect}
+                  clearForm={this.handleClearForm}
+                />
+                {this.state.message !== '' ? <Message message={this.state.message} /> : null}
+                {this.state.searchResults && (
+                  <SearchResults
+                    searchResults={this.state.searchResults}
+                    handleSelect={this.handleActivitySelect}
+                    selectedActivities={this.state.selectedActivities}
+                    patientLatitude={this.state.patientLat}
+                    patientLongitude={this.state.patientLong}
                     selectedDistance={this.state.selectedDistance}
-                    distanceSelect={this.handleDistanceSelect}
-                    categoryValue={this.state.selectedCategory}
-                    handleCategorySelect={this.handleCategorySelect}
-                    typeOptions={this.state.typeOptions}
-                    typeValue={this.state.selectedType}
-                    typeSelect={this.handleTypeSelect}
-                    disableTypeSelect={this.state.disableTypeSelect}
-                    clearForm={this.handleClearForm}
                   />
-                  {this.state.message !== '' ? <Message message={this.state.message} /> : null}
-                  {this.state.searchResults && (
-                    <SearchResults
-                      searchResults={this.state.searchResults}
-                      handleSelect={this.handleActivitySelect}
-                      selectedActivities={this.state.selectedActivities}
-                      patientLatitude={this.state.patientLat}
-                      patientLongitude={this.state.patientLong}
-                      selectedDistance={this.state.selectedDistance}
-                    />
-                  )}
-                </Route>
+                )}
+              </Route>
               )}
               <Route
                 path="/review"
