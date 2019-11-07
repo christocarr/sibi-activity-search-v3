@@ -11,6 +11,7 @@ import SearchResults from "./components/SearchResults";
 import Review from "./components/Review";
 import Modal from './components/Modal'
 import Message from './components/Message'
+import Footer from './components/Footer'
 
 import "./styles.css";
 
@@ -477,6 +478,7 @@ class App extends Component {
             </Switch>
           </div>
         </div>
+        <Footer />
       </Router>
     );
   }
