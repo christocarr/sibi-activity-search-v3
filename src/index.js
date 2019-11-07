@@ -320,7 +320,8 @@ class App extends Component {
         })
         .catch(err => {
           console.log('err', err)
-          this.setState({ message: 'Please enter a full postcode.' })
+          this.setState({ loading: false })
+          this.setState({ message: 'Please enter a valid postcode.' })
       })
     }
   }
