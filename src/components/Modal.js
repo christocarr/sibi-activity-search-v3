@@ -8,7 +8,7 @@ const Modal = ({ selectedTypes, selectedActivities, modalClose, modalOpen }) => 
   return (
     <div className={showHide}>
       <section >
-        <button onClick={modalClose}>Close</button>
+        <button className="modal-close-button" onClick={modalClose}>Close</button>
         <PDFDocument
           activityTypes={selectedTypes}
           activities={selectedActivities} 
