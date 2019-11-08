@@ -117,7 +117,8 @@ form p {
 }
 
 .form-button-container input,
-.review-button-container button {
+.review-button-container button,
+.modal-close-button {
   width: 6rem;
   padding: 0.3rem 0.5rem;
 }
