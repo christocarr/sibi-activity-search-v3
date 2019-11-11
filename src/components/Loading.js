@@ -8,6 +8,7 @@ const Loading = ({ loading }) => {
   return (
     <div className={showHide}>
       <ReactLoading type="spinningBubbles"  color='blue' height='10%' width='10%' />
+      <p>Please wait...</p>
     </div>
     
   )
