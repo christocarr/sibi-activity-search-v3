@@ -30,7 +30,6 @@ Want to contribute? Great!
 ### Todos
 
 * Fix nav menu and search form to top when scrolling down
-* Add loading when search is clicked
 
 License
 ----
