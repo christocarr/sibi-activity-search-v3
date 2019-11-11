@@ -2,7 +2,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer></footer>
+    <footer>
+      <a href="https://www.cvsbrent.org.uk/services/social-involvement-in-brent-initiative/">About</a>
+    </footer>
   )
 }
 
