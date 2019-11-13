@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Logo from '../images/logo-310x310.png'
-import { NONAME } from "dns";
 
 const Nav = () => {
   const style = {textDecoration: 'none', color: 'black'}
