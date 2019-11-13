@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logo from '../images/logo-310x310.png'
 
 const Nav = () => {
@@ -8,8 +8,8 @@ const Nav = () => {
       <div className="nav-items-container">
         <img src={Logo} alt="SIBI Logo" width="90px" />
         <ul>
-          <Link to="/">Search</Link>
-          <Link to="/review">Review</Link>
+          <NavLink to="/">Search</NavLink>
+          <NavLink to="/review">Review</NavLink>
         </ul>
       </div>
     </nav>
