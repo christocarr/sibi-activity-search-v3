@@ -3,7 +3,7 @@
   "name": "SIBI Activity Search",
   "icons": [
     {
-      "src": "./src/images/logo-310x310.png",
+      "src": "./src/images/logo-144x144.png",
       "sizes": "144x144 64x64 32x32 24x24 16x16",
       "type": "image/png"
     }
