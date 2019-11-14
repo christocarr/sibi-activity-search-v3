@@ -131,6 +131,7 @@ form p {
 .modal-close-button {
   width: 6rem;
   padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
 }
 
 .form-button-container input:hover {
@@ -169,6 +170,7 @@ form p {
   color: white;
   background-color: green;
   padding: 0.5rem 0;
+  border-radius: 0.2rem;
 }
 
 .remove-activity-button {
@@ -178,6 +180,7 @@ form p {
   color: white;
   background-color: red;
   padding: 0.5rem 0;
+  border-radius: 0.2rem;
 }
 
 /* activity display styles*/
