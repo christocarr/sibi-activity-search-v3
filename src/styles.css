@@ -73,6 +73,13 @@ label:hover {
   transform: translate(50%, -50%);
 }
 
+.loading-container p {
+  position: fixed;
+  top: 60%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
 /* activity search form*/
 form {
   background-color: lightgray;
