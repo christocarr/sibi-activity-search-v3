@@ -276,7 +276,6 @@ class App extends Component {
     let resultsByDistance
     if (postcode.length > 6 && postcode !== '' && this.state.selectedType !== null) {
       this.setState({ loading: true })
-      debugger
       axios.get(`https://api.getthedata.com/postcode/${postcode}`)
         .then(res => {
           this.setState({
