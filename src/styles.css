@@ -107,6 +107,8 @@ form p {
 .postcode-search input[type="text"] {
   margin-left: 0.5rem;
   width: 4.5rem;
+  border-style: none;
+  padding: 0.2rem;
 }
 
 /* dropdown select container styles */
