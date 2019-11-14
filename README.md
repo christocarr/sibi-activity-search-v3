@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9db13346-550e-46a3-b5b8-4fc76dface7e/deploy-status)](https://app.netlify.com/sites/gracious-neumann-c75389/deploys)
 
-SIBI Activity Search is an app for [CVS Brent] that helps the user search for activities for those who are isolated either due to health or mental issues in and around the Brent council area. More information about SIBI [here].
+SIBI Activity Search is an app created for [CVS Brent] that helps the user (health care professionals) search for activities for those who are isolated either due to health or mental issues in and around the Brent council area. More information about SIBI [here].
 
 ### Tech
 
