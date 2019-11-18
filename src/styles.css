@@ -132,6 +132,7 @@ form p {
   width: 6rem;
   padding: 0.3rem 0.5rem;
   border-radius: 0.2rem;
+  border-color: rgb(192, 192, 192);
 }
 
 .form-button-container input:hover {
