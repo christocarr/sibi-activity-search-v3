@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer>
       <p>Created by <a href="https://www.chriscarr.dev">Christopher Carr</a></p>
-      <a href="https://www.cvsbrent.org.uk/services/social-involvement-in-brent-initiative/">About</a>
+      <p>More about the <a href="https://www.cvsbrent.org.uk/services/social-involvement-in-brent-initiative/">SIBI</a> program.</p>
     </footer>
   )
 }
