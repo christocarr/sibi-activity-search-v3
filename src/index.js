@@ -14,6 +14,7 @@ import Message from './components/Message'
 import Footer from './components/Footer'
 
 import "./styles.css";
+import BackToTop from "./components/BackToTop";
 
 class App extends Component {
   state = {
@@ -27,7 +28,7 @@ class App extends Component {
     patientLat: null,
     patientLong: null,
     selectedDistance: 0,
-    searchResults: [],
+    searchResults: null,
     selectedActivityTypes: [],
     selectedActivities: [],
     modal: false,
@@ -270,7 +271,7 @@ class App extends Component {
     } else {
       this.setState({ message: '' })
     }
-  
+
     console.log(this.state.selectedType)
     const postcode = this.state.postcode.replace(' ', '+')
     let resultsByDistance
@@ -301,7 +302,7 @@ class App extends Component {
 
             // use new arrayOfPoints to sort coords by nearest
             resultsByDistance = orderByDistance(
-              {latitude: this.state.patientLat, longitude: this.state.patientLong}, 
+              {latitude: this.state.patientLat, longitude: this.state.patientLong},
               [...arrayOfPoints]
             )
 
@@ -381,7 +382,7 @@ class App extends Component {
     const activityTypes = Object.assign([], this.state.selectedActivityTypes)
     activities.splice(item, 1);
     activityTypes.splice(str, 1)
-    this.setState({ 
+    this.setState({
       selectedActivities: activities,
       selectedActivityTypes: activityTypes
     });
@@ -395,8 +396,8 @@ class App extends Component {
 
   // open modal to show pdf with print functionality
   handlePrint = () => {
-    this.setState(prevState => ({ 
-      modal: !prevState.modal 
+    this.setState(prevState => ({
+      modal: !prevState.modal
     }))
   }
 
@@ -419,7 +420,7 @@ class App extends Component {
         <div className="App">
           <Nav />
           <div className="container">
-            <Loading loading={this.state.loading} />
+            <Loading loading={this.state.loading}/>
             <Switch>
               <Route exact path="/">
                 <ActivitySearchForm
@@ -439,16 +440,20 @@ class App extends Component {
                   clearForm={this.handleClearForm}
                 />
                 {this.state.message !== '' ? <Message message={this.state.message} /> : null}
-                {this.state.searchResults && (
-                  <SearchResults
-                    searchResults={this.state.searchResults}
-                    handleSelect={this.handleActivitySelect}
-                    selectedActivities={this.state.selectedActivities}
-                    patientLatitude={this.state.patientLat}
-                    patientLongitude={this.state.patientLong}
-                    selectedDistance={this.state.selectedDistance}
-                  />
-                )}
+                {this.state.searchResults !== null  ? 
+                  <div>
+                    <SearchResults
+                      searchResults={this.state.searchResults}
+                      handleSelect={this.handleActivitySelect}
+                      selectedActivities={this.state.selectedActivities}
+                      patientLatitude={this.state.patientLat}
+                      patientLongitude={this.state.patientLong}
+                      selectedDistance={this.state.selectedDistance}
+                    />
+                    <BackToTop />
+                  </div>
+                : null
+                }
               </Route>
               )}
               <Route
