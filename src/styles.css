@@ -256,6 +256,16 @@ footer p {
   margin-right: 1rem;
 }
 
+.back-to-top {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2001;
+  width: 2rem;
+  height: 2rem;
+  background-color: royalblue;
+}
+
 @media screen and (min-width: 768px) {
   .nav-items-container {
     width: 80vw;
