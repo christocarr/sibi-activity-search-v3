@@ -2,9 +2,9 @@ import React from 'react'
 
 const BackToTop = () => {
   return (
-    <div className="back-to-top">
+    <button className="back-to-top">
 
-    </div>
+    </button>
   )
 }
 
