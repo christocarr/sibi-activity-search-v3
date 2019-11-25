@@ -257,9 +257,9 @@ footer p {
 }
 
 .back-to-top {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
   z-index: 2001;
   width: 2rem;
   height: 2rem;
