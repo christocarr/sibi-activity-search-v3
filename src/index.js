@@ -450,7 +450,7 @@ class App extends Component {
                       patientLongitude={this.state.patientLong}
                       selectedDistance={this.state.selectedDistance}
                     />
-                    <BackToTop />
+                    <BackToTop scrollStepInPx="60" delayInMs="16.66"/>
                   </div>
                 : null
                 }
