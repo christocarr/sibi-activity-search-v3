@@ -1,11 +1,16 @@
 import React from 'react'
 
-const BackToTop = () => {
-  return (
-    <button className="back-to-top">
-      ^
-    </button>
-  )
+class BackToTop extends React.Component {
+  state = {
+    intervalId: 0
+  }
+  render() {
+    return (
+      <button className="back-to-top">
+        ^
+      </button>
+    )
+  }
 }
 
 export default BackToTop
