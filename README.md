@@ -4,6 +4,8 @@
 
 SIBI Activity Search is an app created for [CVS Brent] that helps the user (health care professionals) search for activities for those who are isolated either due to health or mental issues in and around the Brent council area. More information about SIBI [here].
 
+![](https://gph.is/g/aeBPPNW)
+
 ### Tech
 
 SIBI Actvity Search uses a number of open source projects to work properly:
