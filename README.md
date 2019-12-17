@@ -27,7 +27,7 @@ $ npm start
 
 ### Development
 
-Want to contribute? Great!
+Want to contribute? Great! Drop me line an we can chat how to make this app better.
 
 ### Todos
 
