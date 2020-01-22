@@ -7,7 +7,7 @@ const Nav = () => {
   return (
     <nav>
       <div className="nav-items-container">
-        <img src={Logo} alt="SIBI Logo" width="90px" />
+        <img src={Logo} alt="SIBI Logo" width="90px" height="90px"/>
         <ul>
           <NavLink exact={true} to="/" activeStyle={style}>Search</NavLink>
           <NavLink to="/review" activeStyle={style}>Review</NavLink>
