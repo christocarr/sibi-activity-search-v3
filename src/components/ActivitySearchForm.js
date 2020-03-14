@@ -31,7 +31,6 @@ const ActivitySearchForm = ({
           />
         </label>
           <label className="radio-button-label" htmlFor="twoKilometres">
-            2km:
             <input
               type="radio"
               id="twoKilometres"
@@ -39,9 +38,9 @@ const ActivitySearchForm = ({
               checked={selectedDistance === 2000}
               onChange={distanceSelect}
             />
+            2km
           </label>
           <label className="radio-button-label" htmlFor="fiveKilometres">
-            5km:
             <input
               type="radio"
               id="fiveKilometres"
@@ -49,9 +48,9 @@ const ActivitySearchForm = ({
               checked={selectedDistance === 5000}
               onChange={distanceSelect}
             />
+            5km
           </label>
           <label className="radio-button-label" htmlFor="all">
-            All:
             <input
               type="radio"
               id="all"
@@ -59,6 +58,7 @@ const ActivitySearchForm = ({
               checked={selectedDistance === 0}
               onChange={distanceSelect}
             />
+            All
           </label>
       </div>
       <ActivitySearch
