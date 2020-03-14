@@ -272,7 +272,6 @@ class App extends Component {
       this.setState({ message: '' })
     }
 
-    console.log(this.state.selectedType)
     const postcode = this.state.postcode.replace(' ', '+')
     let resultsByDistance
     if (postcode.length > 6 && postcode !== '' && this.state.selectedType !== null) {
@@ -286,8 +285,6 @@ class App extends Component {
           }, () => {
             // return all objects that have the value of the selected type
             const results = this.state.sibiData.filter(item => {
-              console.log('item : ', item[this.state.selectedCategory])
-              console.log('selected type value: ', this.state.selectedType.value)
               return item[this.state.selectedCategory] === this.state.selectedType.value
             });
 
