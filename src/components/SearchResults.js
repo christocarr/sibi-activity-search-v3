@@ -1,24 +1,31 @@
-import React from "react";
+import React from 'react';
 import { getDistance } from 'geolib';
-import NameOfService from "./activity-display/NameOfService";
-import Address from "./activity-display/Address";
-import OtherInfo from "./activity-display/OtherInfo";
-import ActivityTimes from "./activity-display/ActivityTimes";
-import Cost from "./activity-display/Cost";
-import Transport from "./activity-display/Transport";
-import Accessibility from "./activity-display/Accessibility";
-import ContactDetails from "./activity-display/ContactDetails";
+import NameOfService from './activity-display/NameOfService';
+import Address from './activity-display/Address';
+import OtherInfo from './activity-display/OtherInfo';
+import ActivityTimes from './activity-display/ActivityTimes';
+import Cost from './activity-display/Cost';
+import Transport from './activity-display/Transport';
+import Accessibility from './activity-display/Accessibility';
+import ContactDetails from './activity-display/ContactDetails';
 
-const SearchResults = ({ searchResults, handleSelect, selectedActivities, patientLatitude, patientLongitude, selectedDistance }) => {
+const SearchResults = ({
+  searchResults,
+  handleSelect,
+  selectedActivities,
+  patientLatitude,
+  patientLongitude,
+  selectedDistance,
+}) => {
   let filterList = [];
   // filter search results by date last check is no later than 18 months
-  filterList = searchResults.filter(item => {
+  filterList = searchResults.filter((item) => {
     const dateNow = Date.now();
     // eighteen months in unix/epoch time in milliseconds
     const eighteenMonths = 47304051840;
     // convert date on sheet to valid format
     let dateString = item.dateLastChecked;
-    let dateParts = dateString.split("/");
+    let dateParts = dateString.split('/');
     let itemDate = new Date(+dateParts[2], dateParts[1] - 1, dateParts[0]);
     //parse sheet date to Unix time
     itemDate = Date.parse(itemDate);
@@ -27,29 +34,25 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
   });
 
   // filter list by nearest activities with given postcode
-  filterList = filterList.filter(item => {
-
-    let distance = 0
+  filterList = filterList.filter((item) => {
+    let distance = 0;
     // if user entered postcode
-    if ( patientLatitude > 0) {
+    if (patientLatitude > 0) {
       // use geoLib package to find distance between first and second coordinates
       distance = getDistance(
         { latitude: patientLatitude, longitude: patientLongitude },
         { latitude: item.Latitude, longitude: item.Longitude }
-      )
+      );
     }
     // if distance is equal or less than chosen range then return item
     if (distance <= selectedDistance) {
-      console.log(distance)
-      return item
+      return item;
     }
 
     // return all items if the All option is chosen
     if (selectedDistance === 0) {
-      console.log(distance)
-      return item
+      return item;
     }
-    
   });
 
   const renderedList = filterList.map((item, index) => {
@@ -84,7 +87,12 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
             Website={item.Website}
             OtherContactInfo={item.OtherContactInfo}
           />
-          <button onClick={handleSelect.bind(this, item)} className="add-activity-button">Select</button>
+          <button
+            onClick={handleSelect.bind(this, item)}
+            className="add-activity-button"
+          >
+            Select
+          </button>
         </li>
       );
     } else if (selectedActivities.indexOf(item) !== -1) {
@@ -101,8 +109,7 @@ const SearchResults = ({ searchResults, handleSelect, selectedActivities, patien
     <div>
       <ul className="activity-list-container">{renderedList}</ul>
     </div>
-  )
-
+  );
 };
 
 export default SearchResults;

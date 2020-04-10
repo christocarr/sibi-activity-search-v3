@@ -56,7 +56,7 @@ class App extends Component {
       selectedCategory: category.value,
       disableTypeSelect: false,
       selectedType: null
-    }, () => console.log('selected category: ', this.state.selectedCategory));
+    });
 
     if (category.value === "Activity (art & craft)") {
       this.setState({
@@ -250,7 +250,7 @@ class App extends Component {
   };
 
   handleTypeSelect = type => {
-    this.setState({ selectedType: type }, () => console.log('selected type: ', this.state.selectedType))
+    this.setState({ selectedType: type })
   };
 
   // controls postcode input
