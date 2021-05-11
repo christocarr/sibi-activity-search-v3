@@ -12,7 +12,7 @@
     "react-dom": "16.8.6",
     "react-loading": "^2.0.3",
     "react-router-dom": "5.1.2",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^4.0.3",
     "react-select": "3.0.8",
     "tabletop": "1.6.2"
   },
