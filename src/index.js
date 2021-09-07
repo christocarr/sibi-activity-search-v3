@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Tabletop from 'tabletop';
+import Papa from 'papaparse';
 import { orderByDistance } from 'geolib';
 import axios from 'axios';
 import Nav from './components/Nav';
@@ -36,18 +37,35 @@ class App extends Component {
   };
 
   componentDidMount() {
+    //The old way when Tabletop relied on Google infrastructure.
+    // this.setState({ loading: true }, () => {
+    //   Tabletop.init({
+    //     key: 'https://docs.google.com/spreadsheets/d/1K_YUYDlRGX1Z5IXtEuQTmu3U_T8sXjw76r90sNNi2W0/edit?usp=sharing',
+    //     callback: (data) => {
+    //       this.setState({
+    //         sibiData: data,
+    //       });
+    //       this.setState({ loading: false });
+    //     },
+    //     simpleSheet: true,
+    //   });
+    // });
+    //The new way using Papa Parse.
     this.setState({ loading: true }, () => {
-      Tabletop.init({
-        key:
-          'https://docs.google.com/spreadsheets/d/1K_YUYDlRGX1Z5IXtEuQTmu3U_T8sXjw76r90sNNi2W0/edit?usp=sharing',
-        callback: (data) => {
-          this.setState({
-            sibiData: data,
-          });
-          this.setState({ loading: false });
-        },
-        simpleSheet: true,
-      });
+      Papa.parse(
+        'https://docs.google.com/spreadsheets/d/e/2PACX-1vThxDYkrd21qQ83vT9Fb0bJD0ZP138dlqcsmrOFdIcvWa6Sk7fJCYupGPemnyfBbfhTVGqcfUTBYBE4/pub?output=csv',
+        {
+          download: true,
+          header: true,
+          complete: (results) => {
+            const data = results.data;
+            this.setState({
+              sibiData: data,
+            });
+            this.setState({ loading: false });
+          },
+        }
+      );
     });
   }
 
