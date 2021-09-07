@@ -11,7 +11,7 @@ SIBI Activity Search is an app created for [CVS Brent] that helps the user (heal
 SIBI Actvity Search uses a number of open source projects to work properly:
 
 * [React] - yes, react
-* [tabletop] - makes a Google sheet available through JavaScript
+* [Papa Parse] - makes a Google sheet available through JavaScript
 * [react-select] - customisable and flexible select control for React
 * [geolib] - a library providing many geospatial operations. The operations used for SIBI activity search are getDistance and orderByDistance
 
@@ -46,7 +46,7 @@ GNU GPLv3
 [here]: <https://www.cvsbrent.org.uk/services/social-involvement-in-brent-initiative/>
 [CVS Brent]: <https://www.cvsbrent.org.uk/about/>
 [React]: <https://reactjs.org/>
-[tabletop]: <https://github.com/jsoma/tabletop>
+[Papa Parse]: <https://github.com/mholt/PapaParse>
 [react-select]: <https://github.com/JedWatson/react-select>
 [geolib]: <https://www.npmjs.com/package/geolib>
 
